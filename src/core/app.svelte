@@ -1,0 +1,128 @@
+<script>
+    import { setContext } from 'svelte';
+    import { Route } from "tinro";
+
+    import DefaultLayout from "../layout/default.layout.svelte";
+
+    import QueryList from "../view/list/query-list.view.svelte";
+
+    export let APP_ENV = {};
+    setContext('APP_CONTEXT', APP_ENV);
+</script>
+
+<Route>
+    <Route path="/">
+        <DefaultLayout>
+            <div>Home</div>
+        </DefaultLayout>
+    </Route>
+    <Route path="/query-list">
+        <QueryList config={{
+            title: '测试动态页面',
+            form: {
+                children: [{
+                    kind: 'text',
+                    name: '文本框'
+                }, {
+                    kind: 'number',
+                    name: '数字框'
+                }, {
+                    kind: 'select',
+                    name: '下拉框',
+                    resolver: {
+                        key: 'b',
+                        value: 'a'
+                    },
+                    children: [{
+                        a: 'a1', b: 2
+                    }, {
+                        a: 'a2', b: 3
+                    }, {
+                        a: 'a3', b: 3
+                    }, {
+                        a: 'a4', b: 4
+                    }]
+                }, {
+                    kind: 'checkbox',
+                    name: '多选框',
+                }, {
+                    kind: 'radio',
+                    name: '单选框',
+                }, {
+                    kind: 'event',
+                    name: '其他',
+                }]
+            },
+            toolbar: {
+                children: [{
+                    kind: 'event',
+                    bind: 'form-search',
+                    name: '搜索'
+                }, {
+                    kind: 'event',
+                    bind: 'form-reset',
+                    name: '清空'
+                }, {
+                    kind: 'event',
+                    bind: 'form-advance-search',
+                    name: '高级搜索'
+                }, {
+                    kind: 'event',
+                    bind: 'page-config',
+                    name: '设置'
+                }, {
+                    kind: 'link',
+                    bind: '/',
+                    name: '主页',
+                    place: 'right'
+                }, {
+                    kind: 'event',
+                    bind: 'form-export',
+                    name: '导出',
+                    place: 'right'
+                }]
+            },
+            table: {
+                columns: [{
+                    name: '行号',
+                }, {
+                    unique: 'kind',
+                    name: '类型',
+                }, {
+                    unique: 'bind',
+                    name: '绑定',
+                }, {
+                    unique: 'name',
+                    name: '显示名称',
+                }],
+                children: [{
+                    kind: 'event',
+                    bind: 'form-search',
+                    name: '搜索'
+                }, {
+                    kind: 'event',
+                    bind: 'form-reset',
+                    name: '清空'
+                }, {
+                    kind: 'event',
+                    bind: 'form-advance-search',
+                    name: '高级搜索'
+                }, {
+                    kind: 'event',
+                    bind: 'page-config',
+                    name: '设置'
+                }, {
+                    kind: 'link',
+                    bind: '/',
+                    name: '主页',
+                    place: 'right'
+                }, {
+                    kind: 'event',
+                    bind: 'form-export',
+                    name: '导出',
+                    place: 'right'
+                }]
+            }
+        }}/>
+    </Route>
+</Route>
