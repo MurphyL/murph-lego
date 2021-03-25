@@ -83,46 +83,24 @@
                 }]
             },
             table: {
+                ajax: {
+                    url: '/mock/lodash.functions.json',
+                    path: 'payload'
+                },
                 columns: [{
                     name: '行号',
                 }, {
-                    unique: 'kind',
-                    name: '类型',
-                }, {
-                    unique: 'bind',
-                    name: '绑定',
-                }, {
                     unique: 'name',
                     name: '显示名称',
+                }, {
+                    unique: 'link',
+                    name: '绑定',
+                }, {
+                    unique: 'id',
+                    name: 'ID',
                 }],
-                children: [{
-                    kind: 'event',
-                    bind: 'form-search',
-                    name: '搜索'
-                }, {
-                    kind: 'event',
-                    bind: 'form-reset',
-                    name: '清空'
-                }, {
-                    kind: 'event',
-                    bind: 'form-advance-search',
-                    name: '高级搜索'
-                }, {
-                    kind: 'event',
-                    bind: 'page-config',
-                    name: '设置'
-                }, {
-                    kind: 'link',
-                    bind: '/',
-                    name: '主页',
-                    place: 'right'
-                }, {
-                    kind: 'event',
-                    bind: 'form-export',
-                    name: '导出',
-                    place: 'right'
-                }]
             }
         }}/>
+        
     </Route>
 </Route>

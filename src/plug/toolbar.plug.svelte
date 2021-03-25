@@ -1,10 +1,20 @@
+<script context="module">
+    let totalComponents = 0;
+</script>
 
 <script>
-    import {router} from 'tinro';
+    import { createEventDispatcher, onMount } from "svelte";
+    import { router } from "tinro";
 
-    import Button from './button.plug.svelte';
+    import Button from "./button.plug.svelte";
 
-    export let config = { children: [] };
+    const dispatch = createEventDispatcher();
+
+    onMount((x) => {
+        console.log(x, this);
+    });
+
+    const { config } = $$props;
     const { children } = config;
     const left = [];
     const right = [];
@@ -15,22 +25,15 @@
             left.push(item);
         }
     }
-    const events = {
-        'empty': console.log,
-        'form-search': console.log,
-        'form-reset': console.log,
-        'form-advance-search': console.log,
-        'page-config': console.log,
-        'form-export': console.log,
-    };
+
     const execute = (e) => {
-        e.stopPropagation(); 
+        e.stopPropagation();
         const { kind, bind } = e.detail;
-        switch(kind) {
-            case 'link':
-                return router.goto(bind); 
+        switch (kind) {
+            case "link":
+                return router.goto(bind);
             default:
-                console.log('未处理事件：', e.detail);
+                dispatch("dte", { action: bind });
         }
     };
 </script>
@@ -38,13 +41,13 @@
 <div class="toolbar-plug container">
     <div class="toolbar-button-group toolbar-button-group-left">
         {#each left as { kind, bind, name }}
-            <Button {kind} bind={bind} label={name} on:click={execute} />
+            <Button {kind} {bind} label={name} on:click={execute} />
         {/each}
     </div>
     {#if right.length}
         <div class="toolbar-button-group toolbar-button-group-right">
             {#each right as { kind, bind, name }}
-                <Button {kind} bind={bind} label={name} on:click={execute} />
+                <Button {kind} {bind} label={name} on:click={execute} />
             {/each}
         </div>
     {/if}

@@ -1,5 +1,5 @@
 <script>
-    const { config } = $$props;
+    const { config, rows } = $$props;
 </script>
 
 <table class="data-table-plug container">
@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        {#each config.children as item, ri}
+        {#each rows as item, ri}
             <tr data-row-index={ri}>
                 {#each config.columns as column, ci}
                     <td data-column-index={ci}>{item[column.unique] || (ri + 1)}</td>
