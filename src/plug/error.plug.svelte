@@ -1,3 +1,4 @@
+
 <div class="error-plug">
-    <span>Error - 错误</span>
+    <span>Error - { JSON.stringify($$props) }</span>
 </div>

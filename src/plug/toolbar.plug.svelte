@@ -1,7 +1,3 @@
-<script context="module">
-    let totalComponents = 0;
-</script>
-
 <script>
     import { createEventDispatcher, onMount } from "svelte";
     import { router } from "tinro";
@@ -9,10 +5,6 @@
     import Button from "./button.plug.svelte";
 
     const dispatch = createEventDispatcher();
-
-    onMount((x) => {
-        console.log(x, this);
-    });
 
     const { config } = $$props;
     const { children } = config;

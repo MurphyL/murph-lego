@@ -10,8 +10,7 @@
 
     import DataTable from "../../plug/data-table.plug.svelte";
 
-    const { title, form, toolbar, table } = $$props.config;
-
+    const { title, form, toolbar, table } = $$props.config || {};
 
     const events = {
         empty: console.log,
@@ -26,15 +25,6 @@
     const bindEvent = (e) => {
         console.log(e);
         events[e.detail.action || "empty"]();
-    };
-    const binding = (node, bar) => {
-        return {
-			update(bar) {
-			},
-			destroy() {
-			}
-		};
-
     };
 </script>
 
