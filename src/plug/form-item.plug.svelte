@@ -23,7 +23,7 @@
         position: relative;
         margin: 0;
         padding: 0;
-        width: calc((100% - 2 * 10px) / 4);
+        width: calc((100% - 2 * 10px) / var(--form-item-cell));
         line-height: 30px;
         vertical-align: middle;
     }

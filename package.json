@@ -5,6 +5,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
+    "generate": "node build.mjs",
     "start": "sirv public -s --single --host 0.0.0.0"
   },
   "devDependencies": {

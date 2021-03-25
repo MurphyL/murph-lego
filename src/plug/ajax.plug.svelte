@@ -3,7 +3,7 @@
 	import Loading from "./loading.plug.svelte";
 	import Error from "./error.plug.svelte";
 
-	const { url, path } = $$props;
+	const { url, path, debug } = $$props;
 
 	const ajax = fetch(url)
 		.then((res) => {
@@ -21,7 +21,14 @@
 {#await ajax}
 	<Loading message="数据加载中……" />
 {:then result}
-	<slot {result} />
+	<slot {result}>
+		<div>AJAX 请求成功！</div>
+	</slot>
+	{#if debug}
+		<pre class="debug-view">
+			<code>{ JSON.stringify(result, null, '\t') }</code>
+		</pre>
+	{/if}
 {:catch error}
 	<Error message={error.message} />
 {/await}

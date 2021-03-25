@@ -2,10 +2,9 @@
     import { setContext } from "svelte";
     import { Route } from "tinro";
 
-    import DefaultLayout from "../layout/default.layout.svelte";
     import Ajax from "../plug/ajax.plug.svelte";
 
-    import QueryList from "../view/list/query-list.view.svelte";
+    import PageEditor from "../view/page.editor.svelte";
 
     export let APP_ENV = {};
 
@@ -13,14 +12,19 @@
 </script>
 
 <Route>
-    <Route path="/">
-        <DefaultLayout>
-            <div>Home</div>
-        </DefaultLayout>
-    </Route>
-    <Route path="/test-query-list">
-        <Ajax url="/mock/ui/query-list.json" let:result>
-            <QueryList config={result} />
+    <Route path="/editor">
+        <Ajax url="build/schema.json" let:result={schema} debug={true}>
+            <PageEditor {schema} />
         </Ajax>
+    </Route>
+    <Route fallback>
+        <ul>
+            <li>
+                <a href="/editor">Editor</a>
+            </li>
+            <li>
+                <a href="/viewer">Viewer</a>
+            </li>
+        </ul>
     </Route>
 </Route>

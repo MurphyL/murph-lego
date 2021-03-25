@@ -1,0 +1,35 @@
+[layout]
+name= "布局"
+children= [
+    'layout',
+    'form',
+    'toolbar',
+]
+[[layout.props]]
+unique= "direction"
+name= "方向"
+[[layout.props.options]]
+unique= "H"
+name= "水平"
+[[layout.props.options]]
+unique= "V"
+name= "垂直"
+
+[form]
+name= "表单"
+children= [
+    'form-item',
+]
+
+[toolbar]
+name= "工具栏"
+children= [
+    'button',
+    'form-item',
+]
+
+[form-item]
+name= "输入"
+
+[button]
+name= "按钮"
