@@ -25,7 +25,7 @@
 	<slot {result}>
 		<div>AJAX 请求成功！</div>
 	</slot>
-	<Debug data={result} />
+	<Debug data={result} title={`AJAX - ${url}`} />
 {:catch error}
 	<Error message={error.message} />
 {/await}

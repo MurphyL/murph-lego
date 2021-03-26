@@ -25,3 +25,7 @@ a, a:visited {
 .container {
 	margin: 15px 10px;
 }
+
+code {
+	font-family: consolas, "Liberation Mono", courier, monospace;
+}

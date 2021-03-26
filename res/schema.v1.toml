@@ -2,11 +2,11 @@
 name = "方向"
 unique = "direction"
 [[definitions.direction.options]]
-name = "水平"
-unique = "horizontal"
-[[definitions.direction.options]]
 name = "垂直"
 unique = "vertical"
+[[definitions.direction.options]]
+name = "水平"
+unique = "horizontal"
 
 [schema.layout]
 children = [

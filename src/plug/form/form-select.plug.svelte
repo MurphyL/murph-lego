@@ -1,9 +1,9 @@
 <script>
     import { onMount } from 'svelte';
     export let value;
-    const { unique, children, name } = $$props;
+    const { unique, children, name, defaultValue } = $$props;
     onMount(() => {
-		value = children[0].value;
+		value = defaultValue || children[0].value;
 	});
 </script>
 
