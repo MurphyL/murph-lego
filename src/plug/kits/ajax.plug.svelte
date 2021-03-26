@@ -1,9 +1,10 @@
 <script>
 	import pathGet from "lodash.get";
-	import Loading from "./loading.plug.svelte";
-	import Error from "./error.plug.svelte";
+	import Loading from "../ui/loading.plug.svelte";
+	import Error from "../ui/error.plug.svelte";
+	import Debug from "./debug.plug.svelte";
 
-	const { url, path, debug } = $$props;
+	const { url, path } = $$props;
 
 	const ajax = fetch(url)
 		.then((res) => {
@@ -24,11 +25,7 @@
 	<slot {result}>
 		<div>AJAX 请求成功！</div>
 	</slot>
-	{#if debug}
-		<pre class="debug-view">
-			<code>{ JSON.stringify(result, null, '\t') }</code>
-		</pre>
-	{/if}
+	<Debug data={result} />
 {:catch error}
 	<Error message={error.message} />
 {/await}

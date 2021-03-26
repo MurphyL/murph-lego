@@ -2,7 +2,7 @@
     import { createEventDispatcher, onMount } from "svelte";
     import { router } from "tinro";
 
-    import Button from "./button.plug.svelte";
+    import Button from "./ui/button.plug.svelte";
 
     const dispatch = createEventDispatcher();
 

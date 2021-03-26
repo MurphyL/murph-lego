@@ -1,35 +1,38 @@
-[layout]
-name= "布局"
-children= [
-    'layout',
-    'form',
-    'toolbar',
+[definitions.direction]
+name = "方向"
+unique = "direction"
+[[definitions.direction.options]]
+name = "水平"
+unique = "horizontal"
+[[definitions.direction.options]]
+name = "垂直"
+unique = "vertical"
+
+[schema.layout]
+children = [
+  'layout',
+  'form',
+  'toolbar',
 ]
-[[layout.props]]
-unique= "direction"
-name= "方向"
-[[layout.props.options]]
-unique= "H"
-name= "水平"
-[[layout.props.options]]
-unique= "V"
-name= "垂直"
+name = "布局"
+[[schema.layout.props]]
+ref = "definitions.direction"
 
-[form]
-name= "表单"
-children= [
-    'form-item',
+[schema.form]
+children = [
+  'form-item',
 ]
+name = "表单"
 
-[toolbar]
-name= "工具栏"
-children= [
-    'button',
-    'form-item',
+[schema.toolbar]
+children = [
+  'button',
+  'form-item',
 ]
+name = "工具栏"
 
-[form-item]
-name= "输入"
+[schema.form-item]
+name = "输入"
 
-[button]
-name= "按钮"
+[schema.button]
+name = "按钮"

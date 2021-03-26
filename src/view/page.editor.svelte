@@ -1,18 +1,20 @@
 <script>
     import { setContext } from 'svelte';
-    import Layout from "../plug/layout.plug.svelte";
+    import LayoutEditor from "../plug/editor/layout-editor.plug.svelte";
 
-    export let schema = { error: true };
-
-    setContext('schema', schema);
+    export let config = { error: true };
+    
+    setContext('schema_config', config);
 </script>
 
-{#if schema.error}
+<svelte:head>
+    <title>表单编辑器</title>
+</svelte:head>
+
+{#if config.error}
     <div>加载配置错误</div>
 {:else}
     <main class="page-editor-view">
-        <div class="page-editor-board">
-            <Layout {...schema.layout} />
-        </div>
+        <LayoutEditor root={true} {...config.schema.layout} />
     </main>
 {/if}

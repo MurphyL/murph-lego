@@ -70,6 +70,7 @@ export default {
 			preventAssignment: true,
 			_APP_ENV: JSON.stringify(Object.assign(ENV_CONFIG, {
 				BUILD_TS: dayjs().unix(),
+				DEBUG: !production,
 				BUILD_AT: dayjs().format('YYYY/MM/DD HH:mm:ss')
 			})),
 		}),

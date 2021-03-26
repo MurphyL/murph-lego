@@ -1,16 +1,17 @@
 <script>
     import shortid from "shortid";
-    import FormInput from "./form/form-input.plug.svelte";
-    import FormSelect from "./form/form-select.plug.svelte";
+    import FormInput from "./form-input.plug.svelte";
+    import FormSelect from "./form-select.plug.svelte";
+    export let value = null;
     const unique = `form-item-${shortid.generate()}`;
-    const { kind = 'text', name, index, ...extra  } = $$props;
+    const { kind = 'text', name, index, ...extra } = $$props;
 </script>
 
 <li class="form-item-plug" data-item-index={index}>
     {#if kind === "select"}
-        <FormSelect {unique} {name} {...extra} />
+        <FormSelect {unique} {name} {...extra} bind:value />
     {:else}
-        <FormInput {unique} {name} type={kind} {...extra} />
+        <FormInput {unique} {name} type={kind} {...extra} bind:value />
     {/if}
 </li>
 

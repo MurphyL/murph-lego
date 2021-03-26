@@ -1,14 +1,11 @@
 <script>
-    
-    import Children from './children.plug.svelte';
+    import ChildItem from './child-item.plug.svelte';
 
-    
-
-    const { name, children, view = 'preview' } = $$props;
+    const { name, root } = $$props;
 </script>
 
 <div class="layout-plug" data-name={name}>
-    <Children key="layout" />
+    <ChildItem { root } key="layout" />
 </div>
 
 <style>
