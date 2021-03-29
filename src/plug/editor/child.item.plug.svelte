@@ -1,9 +1,7 @@
 <script>
     import shortid from 'shortid';
-    import pathGet from 'lodash/get';
-    import pathSet from 'lodash/set';
 
-    import store from "../../plug/editor/editor.store";
+    import { storePathArrayRemove, storePathArrayPush, storePathObjectAssign } from './editor.store.plug.svelte';
 
     import * as SchemaUtils from "../kits/schema.utils.js";
 
@@ -11,7 +9,10 @@
     import Debug from "../kits/debug.plug.svelte";
     import FormItem from "../form/form-item.plug.svelte";
 
-    const { kind, unique, path, index, target } = $$props;
+    export let parent = null;
+    export let index = 0;
+    export let kind = 'layout';
+    export let unique = shortid.generate();
 
     const { name, children, props } = SchemaUtils.schemaPathGet(kind);
 
@@ -39,49 +40,27 @@
                 return `删除组件《${temp}》`;
         }
     };
-    const join = (...parts) => {
-        return parts.filter(item => item && item.length > 0).join('.')
-    };
     const postDetails = () => {
         switch (drawerState.action) {
             case "item-config":
-                return store.update((state) => {
-                    if(path) {
-                        return state;
-                    } else {
-                        return Object.assign(state, properties);
-                    }
-                });
-            case "add-item":
-                return store.update((state) => {
-                    const target = join(path, 'children');
-                    const items = pathGet(state, target) || [];
-                    items.push({
-                        target,
-                        kind: elementType,
-                        index: items.length,
-                        unique: shortid.generate(),
-                        path: `${target}[${items.length}]`, 
-                    });
-                    return pathSet(state, target, items);
-                });
+                return storePathObjectAssign(parent, properties);
             case "remove-item":
-                return store.update((state) => {
-                    const items = pathGet(state, target);
-                    if(items) {
-                        pathSet(state, target, items.filter(item => item.unique !== unique));
-                    }
-                    return state;
+                return storePathArrayRemove(parent, index);
+            case "add-item":
+                return storePathArrayPush([parent, 'children'], {
+                    kind: elementType,
+                    unique: shortid.generate(),
                 });
+
         }
     };
 </script>
 
-<div class="child-item-plug child-{index || 'first'}" data-index={ index || 0 } data-show={JSON.stringify({ path: path || '', unique, name })}>
+<div class="child-item-plug child-{index || 'first'}" data-index={ index || 0 } data-show={JSON.stringify({ index, path: parent || '', unique, name })}>
     <div class="editor-toobar">
         <button data-action="item-config" on:click={toggleDrawer}>设置组件</button>
         <button data-action="add-item" on:click={toggleDrawer}>添加组件</button>
-        {#if path}
+        {#if parent}
             <button data-action="remove-item" on:click={toggleDrawer}>删除组件</button>
         {/if}
     </div>

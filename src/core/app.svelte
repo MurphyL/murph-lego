@@ -17,7 +17,7 @@
 
 <Route>
     <Route path="/editor">
-        <Ajax url="build/schema.json" let:result={schema} debug={true}>
+        <Ajax url="build/schema.json" let:result={schema}>
             <PageEditor schema={schema} />
         </Ajax>
     </Route>

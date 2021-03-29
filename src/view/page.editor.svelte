@@ -1,7 +1,7 @@
 <script>
     import { setContext } from "svelte";
 
-    import store from '../plug/editor/editor.store';
+    import { store } from '../plug/editor/editor.store.plug.svelte';
 
     import Ajax from "../plug/kits/ajax.plug.svelte";
     import Debug from "../plug/kits/debug.plug.svelte";
@@ -21,10 +21,8 @@
 {#if schema.error}
     <div>加载配置错误</div>
 {:else}
-    <main class="page-editor-view">
-        <Ajax url="/build/editor.json" let:result>
-            <RootComponent config={ result } />
-            <Debug data={$store} title="配置信息" />
-        </Ajax>
-    </main>
+    <Ajax url="/build/editor.json" let:result>
+        <RootComponent config={ result } />
+        <Debug data={$store} title="配置信息" />
+    </Ajax>
 {/if}

@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     
-    import store from "../../plug/editor/editor.store";
+    import { store } from './editor.store.plug.svelte';
 
     import ChildItem from "./child.item.plug.svelte";
 
@@ -20,8 +20,8 @@
 
 <div class="editor-root-layout">
     <ChildItem path={null} {unique} {kind}>
-        {#each ($store.children || []) as item}
-            <ChildItem {...item} />
+        {#each ($store.children || []) as item, index}
+            <ChildItem {...item} index={index} />
         {/each}
     </ChildItem>
 </div>
