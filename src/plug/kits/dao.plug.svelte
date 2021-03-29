@@ -1,13 +1,13 @@
 <!-- 数据操作工具类 -->
 <script context="module">
-    import { get, set, assign, remove, trim, isArray, isString } from "lodash";
+    import { get, set, assign, remove, trim, isArray, isString, isNumber } from "lodash";
 
     const pathMaker = (paths) => {
         if (!paths || paths.length === 0) {
             return "";
         }
         if (isArray(paths)) {
-            return paths.filter(isString).map(trim).join(".");
+            return paths.filter(item => isString(item) || isNumber(item)).map(trim).join(".");
         }
         return trim(paths);
     };
@@ -33,17 +33,21 @@
         return get(state, pathMaker(path), defaultValue);
     };
 
-    export const pathArrayRemoveIndex = (state, path, index) => {
-        const targetArray = remove(pathGet(state, path, []), (item, i) => i === index);
+    export const pathArrayRemove = (state, path, index) => {
+        const targetArray = pathGet(state, path, []);
+        remove(targetArray, (item, i) => i === index);
         return pathSet(state, path, targetArray);
     };
 
-    export const pathObjectAssign = (state, path, properties) => {
+    export const pathObjectAssign = (state, path, index, properties) => {
         if (trim(path).length === 0) {
             return assign(state, properties);
         } else {
-            const targetObject = pathGet(state, path, {});
-            return pathSet(state, path, assign(targetObject, properties));
+            const target = pathGet(state, path, {});
+            if(isArray(target)) {
+                assign(target[index], properties); 
+            }
+            return pathSet(state, path, assign(target, properties));
         }
     };
 

@@ -19,7 +19,7 @@
 </script>
 
 <div class="editor-root-layout">
-    <ChildItem path={null} {unique} {kind}>
+    <ChildItem parent={null} {unique} {kind}>
         {#each ($store.children || []) as item, index}
             <ChildItem {...item} index={index} />
         {/each}

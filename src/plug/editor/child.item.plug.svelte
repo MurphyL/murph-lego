@@ -43,11 +43,12 @@
     const postDetails = () => {
         switch (drawerState.action) {
             case "item-config":
-                return storePathObjectAssign(parent, properties);
+                return storePathObjectAssign(parent, index, properties);
             case "remove-item":
                 return storePathArrayRemove(parent, index);
             case "add-item":
-                return storePathArrayPush([parent, 'children'], {
+                const paths = parent ? [parent, index] : [];
+                return storePathArrayPush([...paths, 'children'], {
                     kind: elementType,
                     unique: shortid.generate(),
                 });
@@ -56,7 +57,7 @@
     };
 </script>
 
-<div class="child-item-plug child-{index || 'first'}" data-index={ index || 0 } data-show={JSON.stringify({ index, path: parent || '', unique, name })}>
+<div class="child-item-plug child-{index || 'first'}" data-index={ index || 0 } data-show={JSON.stringify({ index, path: parent, unique, kind })}>
     <div class="editor-toobar">
         <button data-action="item-config" on:click={toggleDrawer}>设置组件</button>
         <button data-action="add-item" on:click={toggleDrawer}>添加组件</button>
@@ -94,9 +95,9 @@
 
 <style>
     .child-item-plug {
+        --form-item-cell: 1;
         position: relative;
         margin: 5px;
-        --form-item-cell: 1;
         z-index: 100;
         min-height: 200px;
         border: 1px solid #ccc;

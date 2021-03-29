@@ -1,7 +1,7 @@
 <script context="module">
     import { get, writable } from "svelte/store";
 
-    import { pathGet, pathArrayPush, pathObjectAssign, pathArrayRemoveIndex } from "../kits/dao.plug.svelte";
+    import { pathGet, pathArrayPush, pathObjectAssign, pathArrayRemove } from "../kits/dao.plug.svelte";
 
     export const store = writable({});
 
@@ -9,8 +9,8 @@
         return store.update((state) => pathArrayPush(state, path, value));
     };
 
-    export const storePathObjectAssign = (path, value) => {
-        return store.update((state) => pathObjectAssign(state, path, value));
+    export const storePathObjectAssign = (path, index, value) => {
+        return store.update((state) => pathObjectAssign(state, path, index, value));
     };
 
     export const storePathGet = (path, defaultValue) => {
@@ -18,7 +18,7 @@
     };
 
     export const storePathArrayRemove = (path, index) => {
-        return store.update((state) => pathArrayRemoveIndex(state, path, index));
+        return store.update((state) => pathArrayRemove(state, path, index));
     };
 
 </script>
