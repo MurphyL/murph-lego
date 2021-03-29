@@ -1,7 +1,7 @@
 <script>
     import { setContext } from "svelte";
 
-    import { store } from '../plug/editor/editor.store.plug.svelte';
+    import { store, storePathObjectAssign } from "../plug/editor/editor.store.plug.svelte";
 
     import Ajax from "../plug/kits/ajax.plug.svelte";
     import Debug from "../plug/kits/debug.plug.svelte";
@@ -12,6 +12,14 @@
 
     setContext("schema_config", schema);
 
+    const mergeStore = (extra) => {
+        const { kind, unique } = extra;
+        storePathObjectAssign(null, 0, {
+            kind,
+            unique,
+        });
+        return extra;
+    };
 </script>
 
 <svelte:head>
@@ -22,7 +30,7 @@
     <div>加载配置错误</div>
 {:else}
     <Ajax url="/build/editor.json" let:result>
-        <RootComponent config={ result } />
+        <RootComponent config={mergeStore(result)} />
         <Debug data={$store} title="配置信息" />
     </Ajax>
 {/if}
