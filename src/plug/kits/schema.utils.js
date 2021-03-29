@@ -1,5 +1,5 @@
 import { getContext } from "svelte";
-import pathGet from "lodash.get";
+import pathGet from "lodash/get";
 
 export const configPathGet = (path) => {
     const config = getContext('schema_config');

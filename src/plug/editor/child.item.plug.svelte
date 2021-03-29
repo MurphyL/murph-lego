@@ -1,7 +1,7 @@
 <script>
     import shortid from 'shortid';
-    import pathGet from 'lodash.get';
-    import pathSet from 'lodash.set';
+    import pathGet from 'lodash/get';
+    import pathSet from 'lodash/set';
 
     import store from "../../plug/editor/editor.store";
 
@@ -69,7 +69,7 @@
                 return store.update((state) => {
                     const items = pathGet(state, target);
                     if(items) {
-                        pathSet(state, target, items.filter(item => item.path !== path));
+                        pathSet(state, target, items.filter(item => item.unique !== unique));
                     }
                     return state;
                 });

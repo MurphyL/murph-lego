@@ -1,5 +1,5 @@
 <script>
-	import pathGet from "lodash.get";
+	import pathGet from "lodash/get";
 	import Loading from "../ui/loading.plug.svelte";
 	import Error from "../ui/error.plug.svelte";
 	import Debug from "./debug.plug.svelte";
