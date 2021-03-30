@@ -34,6 +34,7 @@
         bottom: 0;
         z-index: 1001;
         min-width: 350px;
+        max-width: 50vw;
         background-color: #fff;
         opacity: 1;
     }

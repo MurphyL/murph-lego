@@ -1,6 +1,7 @@
 [definitions.direction]
 name = "方向"
 unique = "direction"
+defaultValue = 'vertical'
 [[definitions.direction.options]]
 name = "垂直"
 unique = "vertical"
@@ -15,7 +16,7 @@ children = [
   'toolbar',
 ]
 name = "布局"
-[[schema.layout.props]]
+[[schema.layout.values]]
 ref = "definitions.direction"
 
 [schema.form]

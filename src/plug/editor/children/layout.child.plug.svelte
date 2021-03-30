@@ -1,25 +1,29 @@
 <script>
-    import shortid from 'shortid';
+    import shortid from "shortid";
+    import { createEventDispatcher } from "svelte";
 
-    import { storePathArrayRemove, storePathArrayPush, storePathObjectAssign } from './editor.store.plug.svelte';
+    import {
+        storePathArrayRemove,
+        storePathArrayPush,
+        storePathObjectAssign,
+    } from "../editor.store.plug.svelte";
 
-    import * as SchemaUtils from "../kits/schema.utils.js";
+    import * as SchemaUtils from "../../kits/schema.utils";
 
-    import Drawer from "../ui/drawer.plug.svelte";
-    import Debug from "../kits/debug.plug.svelte";
-    import FormItem from "../form/form-item.plug.svelte";
-
+    import Drawer from "../../ui/drawer.plug.svelte";
+    import Debug from "../../kits/debug.plug.svelte";
+    import FormItem from "../../form/form-item.plug.svelte";
     export let parent = null;
     export let index = 0;
-    export let kind = 'layout';
+    export let kind = "layout";
     export let unique = shortid.generate();
-
+    
     const { name, children, props } = SchemaUtils.schemaPathGet(kind);
 
     const properties = {};
 
     const drawerState = {};
-
+    
     let elementType = children[0];
 
     const toggleDrawer = ({ target }) => {
@@ -29,6 +33,18 @@
         drawerState.action = target.dataset.action;
         drawerState.showConfigDrawer = !!target.dataset.action;
     };
+    
+    const dispatch = createEventDispatcher();
+
+    const drawer = (e) => {
+        const { action } = e.target.dataset;
+        dispatch("moduleOperation", {
+            action,
+            parent,
+            index,
+        });
+    };
+
     const descAction = () => {
         const temp = `${name} - ${unique}`;
         switch (drawerState.action) {
@@ -48,28 +64,30 @@
                 return storePathArrayRemove(parent, index);
             case "add-item":
                 const paths = parent ? [parent, index] : [];
-                return storePathArrayPush([...paths, 'children'], {
+                return storePathArrayPush([...paths, "children"], {
                     kind: elementType,
                     unique: shortid.generate(),
                 });
-
         }
     };
+    const desc = JSON.stringify({ index, path: parent, unique, kind });
+    const rootClass = `page-editor-layout-child child-${index || 'first'}`;
 </script>
 
-<div class="child-item-plug child-{index || 'first'}" data-index={ index || 0 } data-show={JSON.stringify({ index, path: parent, unique, kind })}>
+<div class={rootClass} data-show={desc}>
     <div class="editor-toobar">
-        <button data-action="item-config" on:click={toggleDrawer}>设置组件</button>
-        <button data-action="add-item" on:click={toggleDrawer}>添加组件</button>
+        <button data-action="item-config" on:click={drawer}>设置组件</button>
+        <button data-action="add-item" on:click={drawer}>添加组件</button>
         {#if parent}
-            <button data-action="remove-item" on:click={toggleDrawer}>删除组件</button>
+            <button data-action="remove-item" on:click={drawer}>删除组件</button>
         {/if}
     </div>
     <slot />
+    <!--
     <Drawer show={drawerState.showConfigDrawer} on:close={toggleDrawer}>
         <h3>{descAction()}</h3>
         <div class="props-group">
-            {#if drawerState.action === 'add-item'}
+            {#if drawerState.action === "add-item"}
                 <FormItem
                     kind="select"
                     name="选择类型"
@@ -91,10 +109,11 @@
         <button on:click={postDetails}>确定</button>
         <Debug title="组件设置信息" data={{ properties }} />
     </Drawer>
+    -->
 </div>
 
 <style>
-    .child-item-plug {
+    .page-editor-layout-child {
         --form-item-cell: 1;
         position: relative;
         margin: 5px;
@@ -103,27 +122,29 @@
         border: 1px solid #ccc;
         border-radius: 5px;
     }
-    .child-item-plug::before {
+    .page-editor-layout-child::before {
         position: absolute;
         left: 10px;
         top: 5px;
         color: #ccc;
         content: attr(data-show);
     }
-    .child-item-plug :global(.child-first) {
+    .page-editor-layout-child :global(.child-first) {
         margin-top: 50px;
     }
-    .child-item-plug .editor-toobar {
+    /**
+    .page-editor-layout-child .editor-toobar {
         position: absolute;
         display: inline-block;
         right: 10px;
         top: 10px;
         visibility: hidden;
     }
-    .child-item-plug :global(.drawer-wrapper h3) {
+    .page-editor-layout-child :global(.drawer-wrapper h3) {
         margin: 10px 0;
     }
-    .child-item-plug:hover .editor-toobar {
+    .page-editor-layout-child:hover .editor-toobar {
         visibility: visible;
     }
+    **/
 </style>

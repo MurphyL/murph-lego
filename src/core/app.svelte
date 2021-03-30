@@ -2,8 +2,6 @@
     import { setContext } from "svelte";
     import { Route } from "tinro";
 
-    import Ajax from "../plug/kits/ajax.plug.svelte";
-
     import PageEditor from "../view/page.editor.svelte";
 
     export let APP_ENV = {};
@@ -17,9 +15,7 @@
 
 <Route>
     <Route path="/editor">
-        <Ajax url="build/schema.json" let:result={schema}>
-            <PageEditor schema={schema} />
-        </Ajax>
+        <PageEditor />
     </Route>
     <Route fallback>
         <ul>

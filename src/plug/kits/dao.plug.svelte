@@ -30,6 +30,9 @@
      * @param defaultValue [defaultValue] (*): The value returned for undefined resolved values.
      */
     export const pathGet = (state, path, defaultValue) => {
+        if(trim(path).length === 0) {
+            return state;
+        }
         return get(state, pathMaker(path), defaultValue);
     };
 
