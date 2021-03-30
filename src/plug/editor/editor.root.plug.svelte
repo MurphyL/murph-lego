@@ -2,6 +2,7 @@
     import * as store from "./editor.store.plug.svelte";
 
     import DynamicModule from "./helper/dynamic.module.plug.svelte";
+    import ConfigEditor from "./helper/config.editor.plug.svelte";
 
     import Drawer from "../ui/drawer.plug.svelte";
     import Debug from "../kits/debug.plug.svelte";
@@ -13,18 +14,16 @@
 
     let drawerVisible = false;
     const drawerConfig = {};
-    const state = {
-        drawerVisible: false,
-    };
 
     const postDetails = (e) => {
         e.stopPropagation();
         drawerVisible = true;
         const { action, parent, index } = e.detail;
-        state.action = action;
+        Object.assign(drawerConfig, e.detail);
         switch (action) {
             case "config-item":
-                Object.assign(drawerConfig, store.values(parent, index));
+                const properties = store.properties(parent, index);
+                Object.assign(drawerConfig, properties);
                 break;
             case "add-item":
                 console.log("add-item");
@@ -39,12 +38,8 @@
 <div class="page-editor-root">
     <DynamicModule {kind} on:moduleOperation={postDetails} />
     <Drawer show={drawerVisible} on:close={() => (drawerVisible = false)}>
-        <div>修改《{drawerConfig.unique}》配置</div>
-        <pre>
-            <code>{JSON.stringify(drawerConfig, null, '  ')}</code>
-        </pre>
+        <ConfigEditor config={drawerConfig} />
     </Drawer>
-    <Debug title="配置信息" data={store.pathGet("config")} />
 </div>
 
 <style>

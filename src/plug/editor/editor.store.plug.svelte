@@ -28,17 +28,17 @@
         return store.update((state) => dao.pathSet(path, state, values));
     };
 
-    export const values = (parent, index) => {
+    export const properties = (parent, index) => {
         let result;
         if (null === parent) {
             result = dao.pathGet(["config"], get(store));
         } else {
             result = dao.pathGet(["config", parent, index], get(store));
         }
-        const { values, kind } = result;
-        if (!values) {
-            const items = pathGet(["schema", kind, "values"]);
-            result.values = items.map((item) => {
+        const { properties, kind } = result;
+        if (!properties) {
+            const items = pathGet(["schema", kind, "properties"]);
+            result.properties = items.map((item) => {
                 if (!item.ref) {
                     return item;
                 }

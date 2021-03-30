@@ -5,6 +5,3 @@
 
 <label for={unique}>{name || '未命名组件'}</label>
 <input id={unique} class="form-item-object" type="text"  bind:value/>
-
-<style>
-</style>

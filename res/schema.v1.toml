@@ -1,13 +1,14 @@
 [definitions.direction]
 name = "方向"
+kind = "select"
 unique = "direction"
 defaultValue = 'vertical'
 [[definitions.direction.options]]
-name = "垂直"
-unique = "vertical"
+label = "垂直"
+value = "vertical"
 [[definitions.direction.options]]
-name = "水平"
-unique = "horizontal"
+label = "水平"
+value = "horizontal"
 
 [schema.layout]
 children = [
@@ -16,7 +17,7 @@ children = [
   'toolbar',
 ]
 name = "布局"
-[[schema.layout.values]]
+[[schema.layout.properties]]
 ref = "definitions.direction"
 
 [schema.form]
