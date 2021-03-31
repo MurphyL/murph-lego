@@ -20,6 +20,8 @@
     export let index = 0;
     export let parent = null;
 
+    console.log(kind);
+
     let action = "view-item";
 
     const config = store.configPathGet(parent, index);
@@ -71,7 +73,7 @@
     </div>
     <div class="module-body">
         {#if action === "view-item"}
-            <svelte:component this={components[kind]} {action} {config} />
+            <svelte:component this={components[kind]} {config} />
         {:else if action === "update-item" || action === "add-item"}
             <ConfigEditor {config} bind:values={moduleState.properties}>
                 <svelte:fragment slot="before">

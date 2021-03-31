@@ -1,15 +1,15 @@
 <script>
+    import DynamicModule from "../helper/dynamic.module.plug.svelte";
 
-    export let action;
     export let config = {};
+
+    console.log(config);
 </script>
 
 <div class="page-editor-child-module">
-    {#if action === 'view-item'}
-        <pre>
-            <code>{JSON.stringify(config, null, '  ')}</code>
-        </pre>
-    {/if}
+    {#each config.children || [] as { kind, unique }, index}
+        <DynamicModule {index} {kind} />
+    {/each}
 </div>
 
 <style>
