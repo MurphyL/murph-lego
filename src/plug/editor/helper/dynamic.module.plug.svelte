@@ -20,8 +20,6 @@
     export let index = 0;
     export let parent = null;
 
-    console.log(kind);
-
     let action = "view-item";
 
     const config = store.configPathGet(parent, index);

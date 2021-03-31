@@ -42,7 +42,9 @@
             const path = ["config", parent, "children"];
             const children = pathGet(path, []);
             children.push({
+                parent: dao.makePath([parent, 'children']),
                 kind: kind,
+                index:children.length,
                 unique: shortid.generate(),
                 properties: properties,
             });

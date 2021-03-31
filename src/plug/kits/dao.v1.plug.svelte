@@ -7,7 +7,7 @@
     import isArray from "lodash/isArray";
     import isString from "lodash/isString";
 
-    const makePath = (path) => {
+    export const makePath = (path) => {
         if (isString(path)) {
             return trim(path);
         } else if (isArray(path)) {

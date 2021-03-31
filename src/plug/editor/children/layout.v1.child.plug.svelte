@@ -7,8 +7,8 @@
 </script>
 
 <div class="page-editor-child-module">
-    {#each config.children || [] as { kind, unique }, index}
-        <DynamicModule {index} {kind} />
+    {#each config.children || [] as { kind, parent }, index}
+        <DynamicModule {index} {kind} {parent} />
     {/each}
 </div>
 
