@@ -11,7 +11,7 @@
         if (isString(path)) {
             return trim(path);
         } else if (isArray(path)) {
-            return path.join(".");
+            return path.filter(item => item !== null && item !== undefined).join(".");
         } else {
             return "";
         }
