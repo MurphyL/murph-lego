@@ -7,16 +7,15 @@
     const { kind = 'text', name, index, ...extra } = $$props;
 </script>
 
-<li class="form-item-plug" data-item-index={index}>
+<div class="form-item-plug" data-item-index={index}>
     {#if kind === "select"}
         <FormSelect {unique} {name} {...extra} bind:value />
     {:else}
         <FormInput {unique} {name} type={kind} {...extra} bind:value />
     {/if}
-</li>
+</div>
 
 <style>
-    .form-item-plug,
     .form-item-plug :global(label) {
         display: inline-block;
     }
@@ -29,7 +28,7 @@
         vertical-align: middle;
     }
     .form-item-plug :global(label) {
-        width: 25%;
+        width: 100px;
         text-align: right;
     }
     .form-item-plug :global(label)::after {

@@ -11,6 +11,7 @@ html {
 	--success-color: #52c41a;
 	--warning-color: #faad14;
 	--error-color: #ff4d4f;
+	--border-color: #d1d5db;
 }
 
 body {
@@ -28,4 +29,9 @@ a, a:visited {
 
 code {
 	font-family: consolas, "Liberation Mono", courier, monospace;
+}
+
+fieldset {
+	border: 1px solid var(--border-color);
+    border-radius: 3px;
 }

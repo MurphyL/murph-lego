@@ -28,7 +28,7 @@
         return store.update((state) => dao.pathSet(path, state, values));
     };
 
-    export const properties = (parent, index) => {
+    export const values = (parent, index) => {
         let result;
         if (null === parent) {
             result = dao.pathGet(["config"], get(store));

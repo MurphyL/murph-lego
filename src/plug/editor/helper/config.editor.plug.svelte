@@ -1,27 +1,20 @@
 <script>
-    import FormItem from "../../form/form-item.plug.svelte";
+    
+    import Form, { FormItem } from "../../form/form.plug.svelte";
+    import DebugView from '../../kits/debug.plug.svelte';
 
-    export let config = {};
-
-    const title = () => {
-        switch (config.action) {
-            case "config-item":
-                return "修改配置";
-            case "add-item":
-                return "新增配置";
-            case "remove-item":
-                return "删除配置";
-        }
+    export let config = {
+        properties: []
     };
 
-    console.log(config);
+    const values = {};
 </script>
 
-<div class="config-editor-plug">
-    <h4>{title()}</h4>
-    <div class="config-properties">
+<div class="config-properties">
+    <Form>
         {#each config.properties as item}
-            <FormItem {...item} />
+            <FormItem {...item} bind:value={values[item.unique]}/>
         {/each}
-    </div>
+    </Form>
+    <DebugView data={values} title="组件数据" />
 </div>

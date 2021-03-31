@@ -6,12 +6,12 @@
 </script>
 
 {#if getContext("DEBUG")}
-    <div class="debug-plug">
-        <h4>{title}</h4>
+    <fieldset class="debug-plug">
+        <legend><b>{title}</b></legend>
         <pre>
             <code>{ JSON.stringify(data, null, '  ') }</code>
         </pre>
-    </div>
+    </fieldset>
 {/if}
 
 <style>
@@ -28,9 +28,6 @@
         top: 5px;
         color: #ccc;
         content: 'DEBUG';
-    }
-    .debug-plug h4 {
-        margin: 5px 0 10px;
     }
     .debug-plug pre {
         margin: 0;

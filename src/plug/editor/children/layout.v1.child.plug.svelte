@@ -1,15 +1,15 @@
 <script>
-    import ModuleToolbar from "../helper/sub-module.toolbar.plug.svelte";
 
-    export let index = 0;
-    export let parent = null;
-
-    console.log(parent, index);
+    export let action;
+    export let config = {};
 </script>
 
-<div class="page-editor-child page-editor-child-layout">
-    <div>Layout</div>
-    <ModuleToolbar {index} {parent} on:moduleOperation />
+<div class="page-editor-child-module">
+    {#if action === 'view-item'}
+        <pre>
+            <code>{JSON.stringify(config, null, '  ')}</code>
+        </pre>
+    {/if}
 </div>
 
 <style>
