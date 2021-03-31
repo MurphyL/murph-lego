@@ -38,16 +38,16 @@
     };
 
     export const addChild = (parent, kind, properties) => {
-        console.log(kind, properties);
-
-        console.log(pathGet(["config", parent, "children"], []));
         return store.update((state) => {
-            const children = pathGet(["config", parent, "children"], []);
+            const path = ["config", parent, "children"];
+            const children = pathGet(path, []);
             children.push({
-                kind,
+                kind: kind,
                 unique: shortid.generate(),
-                properties,
+                properties: properties,
             });
+            pathSet(path, children);
+            return state;
         });
     };
 
