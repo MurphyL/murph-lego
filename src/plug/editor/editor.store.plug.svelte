@@ -1,6 +1,7 @@
 <script context="module">
-    import shortid from 'shortid';
+    import shortid from "shortid";
     import { get as read, writable } from "svelte/store";
+
     import * as dao from "../kits/dao.v1.plug.svelte";
 
     const store = writable({});
@@ -37,14 +38,24 @@
         }));
     };
 
+    export const schemaProperties = (kind) => {
+        const properties = pathGet(`schema.${kind}.properties`, []);
+        return properties.map((item) => {
+            if (item.ref) {
+                return pathGet(item.ref, {});
+            }
+            return item;
+        });
+    };
+
     export const addChild = (parent, kind, properties) => {
         return store.update((state) => {
             const path = ["config", parent, "children"];
             const children = pathGet(path, []);
             children.push({
-                parent: dao.makePath([parent, 'children']),
+                parent: dao.makePath([parent, "children"]),
                 kind: kind,
-                index:children.length,
+                index: children.length,
                 unique: shortid.generate(),
                 properties: properties,
             });
@@ -63,12 +74,17 @@
         const { properties, kind } = result;
         if (!properties) {
             const items = pathGet(["schema", kind, "properties"]);
-            result.properties = items.map((item) => {
+            const properties = {};
+            items.forEach((item) => {
                 if (!item.ref) {
-                    return item;
+                    const { unique, defaultValue } = item;
+                    properties[unique] = defaultValue;
+                } else {
+                    const { unique, defaultValue } = pathGet(item.ref);
+                    properties[unique] = defaultValue;
                 }
-                return pathGet(item.ref) || {};
             });
+            result.properties = properties;
         }
         return result;
     };

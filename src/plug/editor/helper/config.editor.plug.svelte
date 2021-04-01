@@ -2,17 +2,17 @@
     
     import Form, { FormItem } from "../../form/form.plug.svelte";
 
-    export let config = {
-        properties: []
-    };
+    export let config = {};
 
-    export let values = {};
+    const { items, values } = config;
+
+    // export let values = {};
 </script>
 
 <div class="config-properties">
     <Form>
         <slot name="before" />
-        {#each config.properties as item}
+        {#each items as item}
             <FormItem {...item} bind:value={values[item.unique]}/>
         {/each}
         <slot name="after" />

@@ -28,6 +28,7 @@ children = [
 [[schema.form.properties]]
 name = "列数"
 kind = "number"
+unique = "rows"
 defaultValue = 4
 
 [schema.toolbar]

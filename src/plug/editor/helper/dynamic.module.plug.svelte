@@ -24,6 +24,8 @@
 
     const config = store.configPathGet(parent, index);
 
+    console.log(store.schemaProperties(kind));
+
     let moduleState = {};
 
     const setState = (event) => {
@@ -73,7 +75,13 @@
         {#if action === "view-item"}
             <svelte:component this={components[kind]} {config} />
         {:else if action === "update-item" || action === "add-item"}
-            <ConfigEditor {config} bind:values={moduleState.properties}>
+            <ConfigEditor
+                bind:values={moduleState.properties}
+                config={{
+                    items: store.schemaProperties(kind),
+                    values: config.properties,
+                }}
+            >
                 <svelte:fragment slot="before">
                     {#if action === "add-item"}
                         <FormItem
