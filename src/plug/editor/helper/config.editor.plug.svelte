@@ -4,6 +4,8 @@
 
     export let config = {};
 
+    export let values = {};
+
     const { items } = config;
 </script>
 
@@ -11,7 +13,7 @@
     <Form>
         <slot name="before" />
         {#each items as item}
-            <FormItem {...item} bind:value={item.defaultValue}/>
+            <FormItem {...item} bind:value={values[item.unique]}/>
         {/each}
         <slot name="after" />
     </Form>

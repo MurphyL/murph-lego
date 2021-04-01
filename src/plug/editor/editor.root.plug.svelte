@@ -8,7 +8,7 @@
 </script>
 
 <div class="page-editor-root">
-    <DynamicModule kind="layout" />
+    <DynamicModule kind="root" />
 </div>
 
 <style>

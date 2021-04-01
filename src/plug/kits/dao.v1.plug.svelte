@@ -2,6 +2,7 @@
 <script context="module">
     import get from "lodash/get";
     import set from "lodash/set";
+    import remove from "lodash/remove";
     import assign from "lodash/assign";
     import trim from "lodash/trim";
     import isArray from "lodash/isArray";
@@ -32,5 +33,10 @@
         } else {
             return set(state, target, value);
         }
+    };
+
+    export const indexRemove = (index, items) => {
+        remove(items, (o, i) => i === index);
+        return items;
     };
 </script>

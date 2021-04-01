@@ -24,5 +24,5 @@ const buildSource = (source, target) => {
 
 (() => {
     buildSource('schema.v1.toml', 'schema.json');
-    buildSource('lego/editor.v1.toml', 'editor.json');
+    // buildSource('lego/editor.v1.toml', 'editor.json');
 })();

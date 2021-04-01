@@ -11,7 +11,7 @@
             schema,
             definitions,
             config: {
-                kind: "layout",
+                kind: "root",
                 unique: "root",
                 children: [],
             },
@@ -48,16 +48,24 @@
         });
     };
 
-    export const addChild = (parent, kind, properties) => {
+    export const configRemoveChild = (parent, index) => {
+        return store.update((state) => {
+            const path = ["config", parent];
+            const children = pathGet(path, []);
+            const result = dao.indexRemove(index, children);
+            return dao.pathSet(path, state, [...result]);
+        });
+    };
+
+    export const configAddChild = (parent, { kind, properties }) => {
         return store.update((state) => {
             const path = ["config", parent, "children"];
             const children = pathGet(path, []);
             children.push({
-                parent: dao.makePath([parent, "children"]),
-                kind: kind,
-                index: children.length,
-                unique: shortid.generate(),
+                kind,
                 properties: properties,
+                unique: shortid.generate(),
+                parent: dao.makePath([parent, "children"]),
             });
             pathSet(path, children);
             return state;

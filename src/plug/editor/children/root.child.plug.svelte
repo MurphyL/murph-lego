@@ -2,7 +2,6 @@
     import DynamicModule from "../helper/dynamic.module.plug.svelte";
 
     export let config = {};
-
 </script>
 
 <div class="page-editor-child-module">

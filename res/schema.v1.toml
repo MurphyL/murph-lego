@@ -10,18 +10,19 @@ value = "vertical"
 label = "水平"
 value = "horizontal"
 
-[schema.layout]
-name = "布局"
+[schema.root]
+name = "画布"
 children = [
   'form',
   'toolbar',
   'data-table',
+  'layout',
 ]
-[[schema.layout.properties]]
+[[schema.root.properties]]
 ref = "definitions.direction"
 
 [schema.form]
-name = "表单"
+name = "查询表单"
 children = [
   'form-item',
 ]
@@ -40,6 +41,16 @@ children = [
 
 [schema.data-table]
 name = "数据表格"
+
+[schema.layout]
+name = "布局/分组"
+children = [
+  'form',
+  'toolbar',
+  'data-table',
+]
+[[schema.layout.properties]]
+ref = "definitions.direction"
 
 [schema.form-item]
 name = "输入"
