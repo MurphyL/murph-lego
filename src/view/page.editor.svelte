@@ -4,12 +4,9 @@
 </script>
 
 <svelte:head>
-    <title>表单编辑器</title>
+    <title>页面查看器</title>
 </svelte:head>
 
-
-<main class="page-editor">
-    <Ajax url="/build/schema.json" let:result>
-        <PageEditor schema={result} />
-    </Ajax>
-</main>
+<Ajax url="/build/schema.json" let:result>
+    <PageEditor schema={result} />
+</Ajax>

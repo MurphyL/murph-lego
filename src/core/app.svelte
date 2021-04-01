@@ -1,23 +1,19 @@
 <script>
-    import { setContext } from "svelte";
     import { Route } from "tinro";
 
-    import PageEditor from "../view/page.editor.svelte";
+    import PageEditor from "../view/page.editor.v2.svelte";
+    import PageViewer from "../view/page.viewer.v1.svelte";
 
-    export let APP_ENV = {};
-
-    setContext("APP_CONTEXT", APP_ENV);
-    if(APP_ENV.DEBUG) {
-        setContext("DEBUG", true);
-        console.log('调试信息：', APP_ENV);
-    }
 </script>
 
 <Route>
     <Route path="/editor">
         <PageEditor />
     </Route>
-    <Route fallback>
+    <Route path="/lego/v1/:unique" let:meta>
+        <PageViewer unique={meta.params.unique} />
+    </Route>
+    <Route path="/">
         <ul>
             <li>
                 <a href="/editor">Editor</a>
@@ -26,5 +22,8 @@
                 <a href="/viewer">Viewer</a>
             </li>
         </ul>
+    </Route>
+    <Route fallback>
+        <div>404</div>
     </Route>
 </Route>

@@ -1,5 +1,4 @@
 <script>
-    import DynamicModule from "../helper/dynamic.module.plug.svelte";
 
     export let config = {};
 
@@ -7,7 +6,7 @@
 
 <div class="page-editor-child-module">
     {#each config.children || [] as { kind, parent }, index}
-        <DynamicModule {index} {kind} {parent} />
+        <diiv>{index} - {kind} - {parent}</diiv>
     {/each}
 </div>
 

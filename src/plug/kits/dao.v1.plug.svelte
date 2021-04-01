@@ -3,6 +3,7 @@
     import get from "lodash/get";
     import set from "lodash/set";
     import remove from "lodash/remove";
+    import compact from "lodash/compact";
     import assign from "lodash/assign";
     import trim from "lodash/trim";
     import isArray from "lodash/isArray";
@@ -12,7 +13,7 @@
         if (isString(path)) {
             return trim(path);
         } else if (isArray(path)) {
-            return path.filter(item => item !== null && item !== undefined).join(".");
+            return compact(path).join(".");
         } else {
             return "";
         }

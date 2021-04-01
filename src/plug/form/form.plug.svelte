@@ -7,7 +7,11 @@
 
 </script>
 
-<form>
+<form class="form-plug">
     <slot />
 </form>
+
+<style>
+
+</style>
 

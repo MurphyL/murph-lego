@@ -7,7 +7,7 @@ const SOURCE_ROOT = "res/";
 const TARGET_ROOT = "public/build/";
 
 const writeFile = (filepath, json) => {
-    fs.writeFileSync(filepath, JSON.stringify(json, null, '\t'));
+    fs.writeFileSync(filepath, JSON.stringify(json, null, '  '));
 };
 
 const resolveToml = (filepath) => {
@@ -24,5 +24,5 @@ const buildSource = (source, target) => {
 
 (() => {
     buildSource('schema.v1.toml', 'schema.json');
-    // buildSource('lego/editor.v1.toml', 'editor.json');
+    buildSource('mock/hello_world.toml', 'hello_world.json');
 })();
