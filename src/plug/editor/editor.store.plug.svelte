@@ -65,27 +65,10 @@
     };
 
     export const configPathGet = (parent, index) => {
-        let result;
         if (null === parent) {
-            result = dao.pathGet("config", get(store));
+            return dao.pathGet("config", get(store));
         } else {
-            result = dao.pathGet(["config", parent, index], get(store));
+            return dao.pathGet(["config", parent, index], get(store));
         }
-        const { properties, kind } = result;
-        if (!properties) {
-            const items = pathGet(["schema", kind, "properties"]);
-            const properties = {};
-            items.forEach((item) => {
-                if (!item.ref) {
-                    const { unique, defaultValue } = item;
-                    properties[unique] = defaultValue;
-                } else {
-                    const { unique, defaultValue } = pathGet(item.ref);
-                    properties[unique] = defaultValue;
-                }
-            });
-            result.properties = properties;
-        }
-        return result;
     };
 </script>

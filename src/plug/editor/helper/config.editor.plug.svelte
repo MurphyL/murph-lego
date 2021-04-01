@@ -4,16 +4,14 @@
 
     export let config = {};
 
-    const { items, values } = config;
-
-    // export let values = {};
+    const { items } = config;
 </script>
 
 <div class="config-properties">
     <Form>
         <slot name="before" />
         {#each items as item}
-            <FormItem {...item} bind:value={values[item.unique]}/>
+            <FormItem {...item} bind:value={item.defaultValue}/>
         {/each}
         <slot name="after" />
     </Form>

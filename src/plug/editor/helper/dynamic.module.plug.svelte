@@ -24,8 +24,6 @@
 
     const config = store.configPathGet(parent, index);
 
-    console.log(store.schemaProperties(kind));
-
     let moduleState = {};
 
     const setState = (event) => {
@@ -117,6 +115,10 @@
     }
     .page-editor-dynamic-module .operations {
         text-align: right;
+    }
+    .page-editor-dynamic-module .title,
+    .page-editor-dynamic-module .tabs {
+        user-select: none;
     }
     .page-editor-dynamic-module .title,
     .page-editor-dynamic-module .tabs,
