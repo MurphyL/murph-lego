@@ -1,8 +1,7 @@
 <script>
     export let config = {};
-    const { children, properties } = config;
+    const { children } = config;
 
-    console.log(children);
 </script>
 
 <div class="lego-item-viewer lego-table-viewer">

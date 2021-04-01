@@ -75,23 +75,29 @@ value = "select"
 [[children]]
 kind = "toolbar"
 [[children.children]]
-label = "测试A"
+label = "查询"
+bind = "query"
 
 [[children.children]]
-label = "测试B"
+label = "重置"
+bind = "reset"
 
 [[children.children]]
-label = "测试C"
+label = "高级搜索"
+bind = "full_form"
 
 [[children.children]]
-label = "测试D"
+label = "列设置"
+bind = "set_columns"
 
 [[children.children]]
-label = "测试E"
+label = "导出"
+bind = "export"
 place = "right"
 
 [[children.children]]
-label = "测试F"
+label = "批量删除"
+bind = "remove"
 place = "right"
 
 [[children]]
