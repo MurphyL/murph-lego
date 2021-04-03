@@ -42,6 +42,9 @@ children = [
 [schema.data-table]
 name = "数据表格"
 
+[schema.chart]
+name = "图表"
+
 [schema.layout]
 name = "布局/分组"
 children = [

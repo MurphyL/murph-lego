@@ -13,16 +13,6 @@
     <Route path="/lego/v1/:unique" let:meta>
         <PageViewer unique={meta.params.unique} />
     </Route>
-    <Route path="/">
-        <ul>
-            <li>
-                <a href="/editor">Editor</a>
-            </li>
-            <li>
-                <a href="/viewer">Viewer</a>
-            </li>
-        </ul>
-    </Route>
     <Route fallback>
         <div>404</div>
     </Route>

@@ -7,6 +7,9 @@ const SOURCE_ROOT = "res/";
 const TARGET_ROOT = "public/build/";
 
 const writeFile = (filepath, json) => {
+    if(fs.existsSync(filepath)) {
+        fs.truncateSync(filepath);
+    }
     fs.writeFileSync(filepath, JSON.stringify(json, null, '  '));
 };
 
@@ -24,6 +27,8 @@ const buildSource = (source, target) => {
 
 (() => {
     buildSource('schema.v1.toml', 'schema.json');
-    buildSource('mock/hello_world.toml', 'hello_world.json');
-    buildSource('mock/hello_table.toml', 'hello_table.json');
+    buildSource('mock/test.toml', 'test_mock.json');
+    buildSource('mock/table_resp.toml', 'table_resp.json');
+    buildSource('view/hello_chart.toml', 'view_chart.json');
+    buildSource('view/hello_table.toml', 'view_table.json');
 })();

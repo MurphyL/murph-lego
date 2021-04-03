@@ -1,0 +1,11 @@
+title = "Hello, world!"
+kind = "root"
+
+[extra]
+kind = "ajax"
+url = "/build/hello_table.json"
+method = "POST"
+path = "rows"
+
+[[items]]
+kind = "form"
