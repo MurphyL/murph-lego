@@ -1,6 +1,10 @@
 title = "Hello, world!"
 kind = "root"
 
+[[properties]]
+unique = "datasource"
+value = "/build/hello_table.json"
+
 [[children]]
 kind = "form"
 [[children.properties]]
@@ -14,7 +18,15 @@ label = "单据类型"
 [[children.children.properties]]
 unique = "kind"
 value = "select"
-
+[[children.children.properties.children]]
+unique = "a"
+label = "测试A"
+[[children.children.properties.children]]
+unique = "b"
+label = "测试B"
+[[children.children.properties.children]]
+unique = "c"
+label = "测试C"
 
 [[children.children]]
 kind = "form-item"
@@ -39,6 +51,16 @@ label = "状态"
 [[children.children.properties]]
 unique = "kind"
 value = "select"
+[[children.children.properties.children]]
+unique = "a"
+label = "测试A"
+[[children.children.properties.children]]
+unique = "b"
+label = "测试B"
+[[children.children.properties.children]]
+unique = "c"
+label = "测试C"
+
 
 [[children.children]]
 kind = "form-item"
@@ -47,6 +69,16 @@ label = "状态A"
 [[children.children.properties]]
 unique = "kind"
 value = "select"
+[[children.children.properties.children]]
+unique = "a"
+label = "测试A"
+[[children.children.properties.children]]
+unique = "b"
+label = "测试B"
+[[children.children.properties.children]]
+unique = "c"
+label = "测试C"
+
 
 [[children.children]]
 kind = "form-item"
@@ -55,6 +87,16 @@ label = "状态B"
 [[children.children.properties]]
 unique = "kind"
 value = "select"
+[[children.children.properties.children]]
+unique = "a"
+label = "测试A"
+[[children.children.properties.children]]
+unique = "b"
+label = "测试B"
+[[children.children.properties.children]]
+unique = "c"
+label = "测试C"
+
 
 [[children.children]]
 kind = "form-item"
@@ -63,6 +105,16 @@ label = "状态C"
 [[children.children.properties]]
 unique = "kind"
 value = "select"
+[[children.children.properties.children]]
+unique = "a"
+label = "测试A"
+[[children.children.properties.children]]
+unique = "b"
+label = "测试B"
+[[children.children.properties.children]]
+unique = "c"
+label = "测试C"
+
 
 [[children.children]]
 kind = "form-item"
@@ -71,6 +123,16 @@ label = "状态D"
 [[children.children.properties]]
 unique = "kind"
 value = "select"
+[[children.children.properties.children]]
+unique = "a"
+label = "测试A"
+[[children.children.properties.children]]
+unique = "b"
+label = "测试B"
+[[children.children.properties.children]]
+unique = "c"
+label = "测试C"
+
 
 [[children]]
 kind = "toolbar"

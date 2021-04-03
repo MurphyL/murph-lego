@@ -1,20 +1,21 @@
 <script>
+    import { createEventDispatcher } from 'svelte';
+
     import groupBy from "lodash/groupBy";
-    import { alert } from "lodash/_freeGlobal";
 
     export let config = {};
 
-    const { children, properties } = config;
+    const { children } = config;
 
     const { left, right } = groupBy(children, ({ place }) => place || "left");
 
+    const dispatch = createEventDispatcher();
+
     const bindEvent = (kind) => {
-        switch (kind) {
-            case "query":
-                alert("query");
-                break;
-            default:
-                console.log("未配置表单自定义事件");
+        if(kind) {
+            dispatch("legoEvent", { unique: kind });
+        } else {
+            console.log('Greeting, there!');
         }
     };
 </script>

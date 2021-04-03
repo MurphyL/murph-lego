@@ -25,4 +25,5 @@ const buildSource = (source, target) => {
 (() => {
     buildSource('schema.v1.toml', 'schema.json');
     buildSource('mock/hello_world.toml', 'hello_world.json');
+    buildSource('mock/hello_table.toml', 'hello_table.json');
 })();
