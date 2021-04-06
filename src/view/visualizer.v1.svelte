@@ -1,6 +1,9 @@
 <script context="module">
     import { ajax } from "../plug/kits/ajax.plug.svelte";
-    import * as resolver from "../plug/vega/schema.plug.svelte";
+    import * as resolver from "../plug/kits/schema.plug.svelte";
+
+    import Mark from '../plug/marks.bridge.plug.svelte';
+
     const fetch = (unique) => {
         return Promise.all([
             ajax({ url: "/build/schema/vega-lite.v2.json" }),
@@ -20,20 +23,10 @@
 {#await fetch(unique)}
     <div>数据加载中……</div>
 {:then result}
-    <main>
+    <main class="lego-visualizer-v1">
         <h3>{resolver.title(result) || "未命名图表"}</h3>
         {#each resolver.marks(result) as item, index}
-            <div data-mark-index="vega-marks-{index}">
-                {#if item.type === "image"}
-                    <img src={item.url} alt="" />
-                {:else if item.type === "table"}
-                    <table>
-                        <thead>
-                            <th>#</th>
-                        </thead>
-                    </table>
-                {/if}
-            </div>
+            <Mark config={item} {index} />
         {/each}
     </main>
 {:catch error}
