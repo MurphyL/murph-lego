@@ -1,10 +1,41 @@
-<script>
-    import Ajax from "../plug/kits/ajax.plug.svelte";
-    import PageViewer from "../plug/page/viewer/page.viewer.plug.svelte";
-
-    export let unique = 'hello_world';
+<script context="module">
+    import { ajax } from "../plug/kits/ajax.plug.svelte";
+    import * as resolver from "../plug/vega/schema.plug.svelte";
+    const fetch = (unique) => {
+        return Promise.all([
+            ajax({ url: "/build/schema/vega-lite.v2.json" }),
+            ajax({ url: `/build/target/v1/${unique}.json` }),
+        ]);
+    };
 </script>
 
-<Ajax url={`/build/${unique}.json`} let:result>
-    <PageViewer config={result} />
-</Ajax>
+<script>
+    export let unique = "hello";
+</script>
+
+<svelte:head>
+    <title>自定义图表 - Vega Lite V2</title>
+</svelte:head>
+
+{#await fetch(unique)}
+    <div>数据加载中……</div>
+{:then result}
+    <main>
+        <h3>{resolver.title(result) || "未命名图表"}</h3>
+        {#each resolver.marks(result) as item, index}
+            <div data-mark-index="vega-marks-{index}">
+                {#if item.type === "image"}
+                    <img src={item.url} alt="" />
+                {:else if item.type === "table"}
+                    <table>
+                        <thead>
+                            <th>#</th>
+                        </thead>
+                    </table>
+                {/if}
+            </div>
+        {/each}
+    </main>
+{:catch error}
+    <div>数据加载错误 - {error.message}</div>
+{/await}

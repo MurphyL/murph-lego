@@ -2,15 +2,20 @@ import fs from 'fs';
 import path from 'path';
 import toml from 'toml';
 import dayjs from 'dayjs';
+import mkdirp from 'mkdirp';
 
 const SOURCE_ROOT = "res/";
 const TARGET_ROOT = "public/build/";
+
+mkdirp.sync(path.join(TARGET_ROOT, 'schema'));
+mkdirp.sync(path.join(TARGET_ROOT, 'target/v1'));
 
 const writeFile = (filepath, json) => {
     if(fs.existsSync(filepath)) {
         fs.truncateSync(filepath);
     }
-    fs.writeFileSync(filepath, JSON.stringify(json, null, '  '));
+    const content = JSON.stringify(json, null, '  ');
+    fs.writeFileSync(filepath, content);
 };
 
 const resolveToml = (filepath) => {
@@ -18,7 +23,7 @@ const resolveToml = (filepath) => {
 };
 
 const buildSource = (source, target) => {
-    const filepath = path.join(SOURCE_ROOT, source); 
+    const filepath = path.join(SOURCE_ROOT, source);
     const result = resolveToml(filepath);
     Object.assign(result, { ts: dayjs().unix(), filepath })
     writeFile(path.join(TARGET_ROOT, target), result); 
@@ -26,9 +31,7 @@ const buildSource = (source, target) => {
 };
 
 (() => {
-    buildSource('schema.v1.toml', 'schema.json');
-    buildSource('mock/test.toml', 'test_mock.json');
-    buildSource('mock/table_resp.toml', 'table_resp.json');
-    buildSource('view/hello_chart.toml', 'view_chart.json');
-    buildSource('view/hello_table.toml', 'view_table.json');
+    buildSource('schema/vega-lite.v2.toml', 'schema/vega-lite.v2.json');
+    buildSource('specific/v1/url-data.toml', 'target/v1/url-data.json');
+    buildSource('specific/v1/inline-data.toml', 'target/v1/inline-data.json');
 })();

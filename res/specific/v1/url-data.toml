@@ -1,0 +1,21 @@
+# https://vega.github.io/vega-lite/docs/data.html#url
+
+title=  "测试 URL 数据"
+width=  500
+height=  200
+padding=  5
+
+[data]
+url = "data/points.json"
+
+[[projections]]
+
+[[layouts]]
+type = "horizontal"   # horizontal vertical
+
+[[marks]]
+type = "image"
+url = "/favicon.png"
+
+[[marks]]
+type = "table"

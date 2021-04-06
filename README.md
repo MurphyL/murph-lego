@@ -1,2 +1,2 @@
 - [Router](https://github.com/AlexxNB/tinro#metaparams)
-- [lodash.get](https://www.lodashjs.com/docs/lodash.get)
+- [Vega Lite](https://vega.github.io/vega-lite/docs/)

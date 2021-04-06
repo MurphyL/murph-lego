@@ -1,0 +1,4 @@
+# https://vega.github.io/vega-lite/docs/data.html#inline
+
+[data]
+values= [12, 23, 47, 6, 52, 19]
