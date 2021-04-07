@@ -1,9 +1,9 @@
 <script context="module">
-    import group from 'lodash/groupBy';
+    import group from "lodash/groupBy";
     import { ajax } from "../plug/kits/ajax.plug.svelte";
     import { extract } from "../plug/kits/schema.plug.svelte";
 
-    import Group from '../plug/mark/group.mark.plug.svelte';
+    import Root from "../plug/mark/root.mark.plug.svelte";
 
     const fetch = (unique) => {
         return Promise.all([
@@ -12,13 +12,20 @@
         ]).then(extract);
     };
 
-    const layouts = (marks) => {
-        return group(marks, ({layout}) => layout || 'default');
+    const build = (marks) => {
+        return group(marks, ({ layout }) => layout || "default");
     };
 </script>
 
 <script>
     export let unique = "hello";
+
+    const reslove = ({ marks, layouts }) => {
+        return {
+            layouts,
+            config: build(marks),
+        };
+    };
 </script>
 
 <svelte:head>
@@ -29,8 +36,8 @@
     <div>数据加载中……</div>
 {:then result}
     <main class="lego-visualizer-v1">
-        <h3>{result['title'] || "未命名图表"}</h3>
-        <Group config={layouts(result['marks'])} />
+        <h3>{result["title"] || "未命名图表"}</h3>
+        <Root {...reslove(result)} />
     </main>
 {:catch error}
     <div>数据加载错误 - {error.message}</div>

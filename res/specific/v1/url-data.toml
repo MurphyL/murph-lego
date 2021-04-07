@@ -21,3 +21,6 @@ layout = "top"
 [[marks]]
 type = "table"
 layout = "top"
+
+[[marks]]
+type = "table"

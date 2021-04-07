@@ -9,6 +9,9 @@ unique = "title"
 unique = "marks"
 
 [[rules]]
+unique = "layouts"
+
+[[rules]]
 unique = "data.format"
 
 [[rules]]

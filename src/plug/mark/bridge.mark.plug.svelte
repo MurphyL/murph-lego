@@ -7,12 +7,10 @@
     export let config = {};
     export let group = "default";
 
-    console.log(config);
-
     const { type, ...extra } = config;
 </script>
 
-<div class="data-marks-{index}" data-group={group}>
+<div class="data-mark" data-group-index={index} data-group={group}>
     {#if type === "image"}
         <img src={extra.url} alt="" />
     {:else if type === "table"}
@@ -23,3 +21,9 @@
         </pre>
     {/if}
 </div>
+
+<style>
+    .data-mark {
+        flex: 1;
+    }
+</style>
