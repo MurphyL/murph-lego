@@ -2,14 +2,17 @@ name = "vega-lite-v2"
 # https://vega.github.io/vega-lite/docs/spec.html
 schema = "https://vega.github.io/schema/vega/v5.json"
 
-title = "title"
+[[rules]]
+unique = "title"
 
-marks = "marks"
+[[rules]]
+unique = "marks"
 
-[data]
-format = "format"
-source = "source"
-url = "url"
-values = "values"
+[[rules]]
+unique = "data.format"
 
+[[rules]]
+unique = "data.values"
 
+[[rules]]
+unique = "data.url"

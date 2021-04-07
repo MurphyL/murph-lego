@@ -1,7 +1,7 @@
 <script>
     import { Route } from "tinro";
 
-    import Visualizer from "../view/visualizer.v1.svelte";
+    import Visualizer from "../view/visualizer.v1.view.svelte";
 </script>
 
 <Route>

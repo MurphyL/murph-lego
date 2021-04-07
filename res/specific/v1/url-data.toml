@@ -10,12 +10,14 @@ url = "data/points.json"
 
 [[projections]]
 
-[[layouts]]
+[layouts.top]
 type = "horizontal"   # horizontal vertical
 
 [[marks]]
 type = "image"
 url = "/favicon.png"
+layout = "top"
 
 [[marks]]
 type = "table"
+layout = "top"
