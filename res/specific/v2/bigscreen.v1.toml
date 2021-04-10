@@ -48,27 +48,23 @@ height = 300
 width = 260
 url = "/mock/series.mock.v1.json"
 
-
 [[children]]
-component = "Container"
-
-[[children.children]]
 component = "Toolbar"
-[[children.children.children]]
+[[children.children]]
 component = "button"
 text = "L1"
-[[children.children.children]]
+[[children.children]]
 component = "button"
 text = "L2"
-[[children.children.children]]
+[[children.children]]
 component = "button"
 place = "right"
 text = "R1"
-[[children.children.children]]
+[[children.children]]
 component = "button"
 place = "right"
 text = "R2"
-[[children.children.children]]
+[[children.children]]
 component = "button"
 place = "right"
 text = "R3"

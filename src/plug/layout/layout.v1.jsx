@@ -23,11 +23,7 @@ const Layout = ({ config }) => {
         Chart,
         FlexLine
     });
-    return (
-        <div className="lego-layout" data-component={component}>
-            {view.parseSchema({ ...schema, component })}
-        </div>
-    );
+    return view.parseSchema({ ...schema, component });
 }
 
 export default Layout;

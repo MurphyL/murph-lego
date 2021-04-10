@@ -1,4 +1,4 @@
-CONTAINER=murph-lego-v1
+CONTAINER=murph-lego
 
 SERVE_PORT?=6600
 
