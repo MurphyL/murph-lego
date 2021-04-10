@@ -1,0 +1,25 @@
+[[data]]
+label = "测试A"
+[[data.items]]
+label = "衬衫"
+value = 5
+[[data.items]]
+label = "羊毛衫"
+value = 20
+[[data.items]]
+label = "雪纺衫"
+value = 36
+[[data.items]]
+label = "裤子"
+value = 10
+[[data.items]]
+label = "高跟鞋"
+value = 5
+[[data.items]]
+label = "袜子"
+value = 20
+
+[[data]]
+label = "测试B"
+[[data]]
+label = "测试C"

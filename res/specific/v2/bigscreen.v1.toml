@@ -1,0 +1,93 @@
+component = "Bigscreen"
+layout = "bigscreen"
+
+[[children]]
+component = "FlexLine"
+
+[[children.children]]
+component = "Chart"
+engine = "echart"
+[children.children.config]
+height = 300
+width = 260
+url = "/mock/series.mock.v1.json"
+type = "bar"
+
+[[children.children]]
+component = "Chart"
+engine = "echart"
+[children.children.config]
+height = 300
+width = 260
+url = "/mock/series.mock.v1.json"
+type = "k"
+
+[[children.children]]
+component = "Chart"
+engine = "echart"
+[children.children.config]
+height = 300
+width = 260
+url = "/mock/series.mock.v1.json"
+type = "line"
+
+[[children.children]]
+component = "Chart"
+engine = "echart"
+[children.children.config]
+height = 300
+width = 260
+url = "/mock/series.mock.v1.json"
+type = "line"
+
+[[children.children]]
+component = "Chart"
+engine = "@antv/g2"
+[children.children.config]
+height = 300
+width = 260
+url = "/mock/series.mock.v1.json"
+
+
+[[children]]
+component = "Container"
+
+[[children.children]]
+component = "Toolbar"
+[[children.children.children]]
+component = "button"
+text = "L1"
+[[children.children.children]]
+component = "button"
+text = "L2"
+[[children.children.children]]
+component = "button"
+place = "right"
+text = "R1"
+[[children.children.children]]
+component = "button"
+place = "right"
+text = "R2"
+[[children.children.children]]
+component = "button"
+place = "right"
+text = "R3"
+
+
+[[children]]
+component = "FlexLine"
+
+[[children.children]]
+component = "Datagrid"
+[children.children.style]
+flex = 1
+
+[[children.children]]
+component = "Datagrid"
+[children.children.style]
+flex = 1
+
+[[children.children]]
+component = "Datagrid"
+[children.children.style]
+flex = 1
