@@ -2,7 +2,9 @@ component = "Bigscreen"
 layout = "bigscreen"
 
 [[children]]
-component = "FlexLine"
+component = "Container"
+[children.style]
+display = "flex"
 
 [[children.children]]
 component = "Chart"
@@ -71,7 +73,9 @@ text = "R3"
 
 
 [[children]]
-component = "FlexLine"
+component = "Container"
+[children.style]
+display = "flex"
 
 [[children.children]]
 component = "Datagrid"
