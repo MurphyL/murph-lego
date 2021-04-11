@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@geist-ui/react": "^2.1.4",
+    "@antv/g2": "^4.1.13",
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
-    "react-dnd": "^14.0.2",
-    "react-dnd-html5-backend": "^14.0.0",
     "react-dom": "^17.0.2",
     "react-json-schema": "^1.2.2",
+    "react-loading-skeleton": "^2.2.0",
     "react-router-dom": "^5.2.0",
+    "react-spinners": "^0.10.6",
     "scriptjs": "^2.5.9",
     "wouter": "^2.7.4"
   },
@@ -39,7 +39,6 @@
     ]
   },
   "devDependencies": {
-    "@antv/g2": "^4.1.13",
     "echarts": "^5.0.2",
     "react-scripts": "4.0.3",
     "shelljs": "^0.8.4",

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Dynamic from 'utils/dynamic.utils.jsx';
 
 import styles from './bigscreen.v1.module.css';

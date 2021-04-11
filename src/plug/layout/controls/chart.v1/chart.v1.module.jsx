@@ -16,7 +16,7 @@ const Chart = ({ engine, style, config, option }) => {
         );
     }
     return (
-        <div className={styles.root} style={style} data-chart-engine={engine}>
+        <div className={styles.root} style={style}>
             <ChartRenderer config={config} option={option} engine={engine} />
         </div>
     );

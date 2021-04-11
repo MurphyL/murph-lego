@@ -9,9 +9,6 @@ import Form, { FormControl } from './controls/form.v1/form.v1.module.jsx';
 import Datagrid from './controls/datagrid.v1/datagrid.v1.module.jsx';
 import Chart from './controls/chart.v1/chart.v1.module.jsx';
 
-
-
-
 const Layout = ({ config }) => {
     const { component = 'empty', ...schema } = config;
     const view = new JsonSchema();

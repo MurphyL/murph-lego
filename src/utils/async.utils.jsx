@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import Spinner from 'react-spinkit';
+
 import axios from 'axios';
 
 export const ajax = ({ method = 'GET', url, data }) => {
@@ -27,7 +29,7 @@ export const AjaxComponent = ({ url, render }) => {
     if (null === state || undefined === state) {
         return (
             <div className="ajax-component loading">
-                <span>数据加载中……</span>
+                <Spinner name="double-bounce" />
             </div>
         );
     }
