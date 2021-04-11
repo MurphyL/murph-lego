@@ -9,7 +9,8 @@
 }
 
 .root .tree {
-    margin: 3px 5px;
+    margin: 0 0 0 5px;
+    padding: 5px;
     width: 280px;
     border-right: 1px solid #bfbfbf;
 }
@@ -51,12 +52,23 @@
 }
 
 .root .board .toolbar {
+    padding-right: 12px;
     text-align: right;
+    border-bottom: 1px solid #bfbfbf;
 }
 
 .root .board .toolbar .button {
     display: inline-block;
     padding: 5px;
+}
+
+.root .board .toolbar .button:hover {
+    opacity: 0.5;
+    color: #002329;
+}
+
+.root .board .content {
+    margin: 10px;
 }
 
 .root .tree .node .label .suffix,
