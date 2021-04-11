@@ -1,0 +1,66 @@
+:global(html), :global(body), :global(#root), .root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.root {
+    display: flex;
+}
+
+.root .tree {
+    margin: 3px 5px;
+    width: 280px;
+    border-right: 1px solid #bfbfbf;
+}
+
+.root .tree .node .label {
+    position: relative;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.root .tree .node .label:hover {
+    background-color: #f5f5f5;
+    color: #141414;
+}
+
+.root .tree .node .label .suffix {
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    right: 10px;
+    display: none;
+}
+
+.root .tree .node .label:hover .suffix {
+    display: inline-block;
+}
+
+.root .tree .node .label .suffix svg {
+    width: 14px;
+}
+
+.root .tree .node .children {
+    margin: 2px 3px;
+}
+
+.root .board {
+    flex: 1;
+}
+
+.root .board .toolbar {
+    text-align: right;
+}
+
+.root .board .toolbar .button {
+    display: inline-block;
+    padding: 5px;
+}
+
+.root .tree .node .label .suffix,
+.root .board .toolbar .button {
+    cursor: pointer;
+    user-select: none;
+}
