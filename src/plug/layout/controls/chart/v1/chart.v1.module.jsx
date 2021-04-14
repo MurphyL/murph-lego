@@ -58,11 +58,15 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
         // 扩展
         config.extra && ((extraItems) => {
             (extraItems || []).forEach(([extra, ...more]) => {
+                // 标记
                 if (extra === 'mark' && type === 'line') {
                     const [markType = "circle"] = more;
+                    // 显示标记
                     const marks = chartInstance.point().position(position).shape(markType);
+                    // 着色
                     config.group && marks.color(config.group, (config.color));
                 }
+                // 面积图
                 if (extra === 'area' && type === 'line') {
                     chartInstance.area().position(position);
                 }
