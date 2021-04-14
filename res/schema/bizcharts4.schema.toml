@@ -1,0 +1,11 @@
+[Chart]
+component = 'Chart'
+padding = [10, 10, 10, 10]
+autoFit = true
+
+[Line]
+component = 'LineAdvance'
+shape = "smooth"
+
+[Bar]
+component = 'Interval'

@@ -47,8 +47,9 @@ const buildSource = (source, target) => {
 
 (() => {
     buildSource('mock/series.mock.v1.toml', 'mock/series.mock.v1.json');
-    buildSource('schema/bigscreen_1.0.toml', 'schema/bigscreen.1.0.json');
-    buildSource('schema/query-list_1.0.toml', 'schema/query-list.1.0.json');
+    buildSource('mock/series.mock.v2.toml', 'mock/series.mock.v2.json');
+    buildSource('mock/series.mock.v3.toml', 'mock/series.mock.v3.json');
+    buildSource('mock/series.mock.v4.toml', 'mock/series.mock.v4.json');
     buildSource('specific/v1/url-data.toml', 'target/v1/url-data.json');
     buildSource('specific/v1/inline-data.toml', 'target/v1/inline-data.json');
     buildSource('specific/v2/bigscreen.v1.toml', 'target/v2/bs_v1.json');

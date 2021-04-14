@@ -1,5 +1,4 @@
 component = "Bigscreen"
-layout = "bigscreen"
 
 [[children]]
 component = "Container"
@@ -8,47 +7,54 @@ display = "flex"
 
 [[children.children]]
 component = "Chart"
-engine = "echart"
+request = ["get", "/mock/series.mock.v1.json"]
 [children.children.config]
 height = 300
 width = 260
-url = "/mock/series.mock.v1.json"
 type = "bar"
+axis = ["label", "value"]
 
 [[children.children]]
 component = "Chart"
-engine = "echart"
+request = ["get", "/mock/series.mock.v2.json"]
 [children.children.config]
 height = 300
 width = 260
-url = "/mock/series.mock.v1.json"
-type = "k"
-
-[[children.children]]
-component = "Chart"
-engine = "echart"
-[children.children.config]
-height = 300
-width = 260
-url = "/mock/series.mock.v1.json"
 type = "line"
+axis = ["month", "temperature"]
+group = "city"
+extra = [["mark"]]
 
 [[children.children]]
 component = "Chart"
-engine = "echart"
+request = ["get", "/mock/series.mock.v4.json"]
 [children.children.config]
 height = 300
 width = 260
-url = "/mock/series.mock.v1.json"
+type = "bar"
+axis = ["time", "value"]
+group = "type"
+
+[[children.children]]
+component = "Chart"
+request = ["get", "/mock/series.mock.v4.json"]
+[children.children.config]
+height = 300
+width = 260
+type = "pie"
+axis = ["value"]
+group = "type"
+
+[[children.children]]
+component = "Chart"
+request = ["get", "/mock/series.mock.v3.json"]
+[children.children.config]
+height = 300
+width = 260
 type = "line"
-
-[[children.children]]
-component = "Chart"
-engine = "@antv/g2"
-[children.children.config]
-height = 300
-width = 260
-url = "/mock/series.mock.v1.json"
+axis = ["year", "value"]
+smooth = false
+extra = [["area"]]
 
 [[children]]
 component = "Toolbar"
@@ -70,7 +76,6 @@ text = "R2"
 component = "button"
 place = "right"
 text = "R3"
-
 
 [[children]]
 component = "Container"

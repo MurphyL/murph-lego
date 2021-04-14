@@ -9,5 +9,4 @@ const Bigscreen = ({ children }) => {
         </div>
     );
 };
-
 export default Bigscreen;

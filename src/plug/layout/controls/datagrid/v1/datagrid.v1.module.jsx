@@ -1,8 +1,8 @@
 import styles from './datagrid.v1.module.css';
 
-const Datagrid = ({ style }) => {
+const Datagrid = ({ _path, style }) => {
     return (
-        <div className={styles.root} style={style}>
+        <div className={styles.root} style={style} path={_path}>
             <table className={styles.instance}>
                 <thead>
                     <tr>

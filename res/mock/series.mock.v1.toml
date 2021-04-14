@@ -1,25 +1,20 @@
-[[data]]
-label = "测试A"
-[[data.items]]
-label = "衬衫"
-value = 5
-[[data.items]]
-label = "羊毛衫"
-value = 20
-[[data.items]]
-label = "雪纺衫"
-value = 36
-[[data.items]]
-label = "裤子"
-value = 10
-[[data.items]]
-label = "高跟鞋"
-value = 5
-[[data.items]]
-label = "袜子"
-value = 20
+title = "series.mock.v1"
 
 [[data]]
-label = "测试B"
+label = "衬衫"
+value = 5
 [[data]]
-label = "测试C"
+label = "羊毛衫"
+value = 20
+[[data]]
+label = "雪纺衫"
+value = 36
+[[data]]
+label = "裤子"
+value = 10
+[[data]]
+label = "高跟鞋"
+value = 5
+[[data]]
+label = "袜子"
+value = 20
