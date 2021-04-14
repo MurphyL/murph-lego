@@ -76,7 +76,7 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
         }
     });
     return (
-        <div className="lego-chart-wrapper" ref={chartTarget} />
+        <div className="lego-chart-wrapper" data-chart-type={type} data-engine="@antv/g2" ref={chartTarget} />
     );
 }
 
