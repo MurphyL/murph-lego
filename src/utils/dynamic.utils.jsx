@@ -15,8 +15,6 @@ export const ajax = ({ method = 'get', url, data }) => {
     });
 };
 
-export const schemaAjax = ([method, url]) => ajax({ method, url });
-
 export const $join = (items) => {
     return ['/', ...$compact(items)].join('/');
 };

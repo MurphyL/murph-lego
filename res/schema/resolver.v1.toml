@@ -1,0 +1,4 @@
+[data]
+type = ["data[0]", "ajaxGet"]
+target = "data[1]"
+path = ["data[2]", ""]

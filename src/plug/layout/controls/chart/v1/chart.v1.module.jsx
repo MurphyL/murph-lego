@@ -31,7 +31,7 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
             syncViewPadding: true,
         });
         // 加载数据
-        chartInstance.data(option.data || []);
+        chartInstance.data(option || []);
         // 轴向
         const position = axis.join('*');
         // 数据构造
@@ -84,11 +84,11 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
     );
 }
 
-const AsyncChart = ({ _path, style, config: userConfig, request }) => {
+const AsyncChart = ({ _path, style, config: userConfig, data }) => {
     const { type, ...extra } = (userConfig || {});
     return (
         <div className={styles.root} style={style} data-path={_path}>
-            <AsyncModule promise={request}>
+            <AsyncModule fetch={data}>
                 {(data) => (
                     <ChartInstance type={type} option={data} {...extra} />
                 )}

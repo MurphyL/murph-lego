@@ -7,75 +7,54 @@ display = "flex"
 
 [[children.children]]
 component = "Chart"
-request = ["get", "/mock/series.mock.v1.json"]
+data = ["ajaxGet", "/mock/series.mock.v1.json", "data"]
 [children.children.config]
-height = 300
-width = 260
-type = "bar"
 axis = ["label", "value"]
-
-[[children.children]]
-component = "Chart"
-request = ["get", "/mock/series.mock.v2.json"]
-[children.children.config]
 height = 300
-width = 260
-type = "line"
-axis = ["month", "temperature"]
-group = "city"
-extra = [["mark"]]
-
-[[children.children]]
-component = "Chart"
-request = ["get", "/mock/series.mock.v4.json"]
-[children.children.config]
-height = 300
-width = 260
 type = "bar"
+width = 260
+
+[[children.children]]
+component = "Chart"
+data = ["ajaxGet", "/mock/series.mock.v2.json", "data"]
+[children.children.config]
+axis = ["month", "temperature"]
+extra = [["mark"]]
+group = "city"
+height = 300
+type = "line"
+width = 260
+
+[[children.children]]
+component = "Chart"
+data = ["ajaxGet", "/mock/series.mock.v4.json", "data"]
+[children.children.config]
 axis = ["time", "value"]
 group = "type"
+height = 300
+type = "bar"
+width = 260
 
 [[children.children]]
 component = "Chart"
-request = ["get", "/mock/series.mock.v4.json"]
+data = ["ajaxGet", "/mock/series.mock.v4.json", "data"]
 [children.children.config]
-height = 300
-width = 260
-type = "pie"
 axis = ["value"]
 group = "type"
+height = 300
+type = "pie"
+width = 260
 
 [[children.children]]
 component = "Chart"
-request = ["get", "/mock/series.mock.v3.json"]
+data = ["ajaxGet", "/mock/series.mock.v3.json", "data"]
 [children.children.config]
-height = 300
-width = 260
-type = "line"
 axis = ["year", "value"]
-smooth = false
 extra = [["area"]]
-
-[[children]]
-component = "Toolbar"
-[[children.children]]
-component = "button"
-text = "L1"
-[[children.children]]
-component = "button"
-text = "L2"
-[[children.children]]
-component = "button"
-place = "right"
-text = "R1"
-[[children.children]]
-component = "button"
-place = "right"
-text = "R2"
-[[children.children]]
-component = "button"
-place = "right"
-text = "R3"
+height = 300
+smooth = false
+type = "line"
+width = 260
 
 [[children]]
 component = "Container"
