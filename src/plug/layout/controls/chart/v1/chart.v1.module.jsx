@@ -84,11 +84,11 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
     );
 }
 
-const AsyncChart = ({ _path, style, config: userConfig, data }) => {
+const AsyncChart = ({ _path, style, config: userConfig, data:datasource }) => {
     const { type, ...extra } = (userConfig || {});
     return (
-        <div className={styles.root} style={style} data-path={_path}>
-            <AsyncModule fetch={data}>
+        <div className={styles.root} style={style} data-module-unique={_path} data-source={datasource}>
+            <AsyncModule fetch={datasource}>
                 {(data) => (
                     <ChartInstance type={type} option={data} {...extra} />
                 )}
