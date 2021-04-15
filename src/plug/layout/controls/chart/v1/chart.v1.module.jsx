@@ -12,7 +12,7 @@ const charts = {
     pie: 'interval'
 };
 
-const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
+const ChartInstance = ({ type, option, width, height, x: chartConfig, ...config }) => {
     const chartTarget = useRef(null);
     useEffect(() => {
         if (!chartTarget) {
@@ -33,13 +33,13 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
         // 加载数据
         chartInstance.data(option || []);
         // 轴向
-        const position = axis.join('*');
+        const position = chartConfig.axis.join('*');
         // 数据构造
         const chartObject = chartInstance[charts[type]]().position(position);
         switch (type) {
             case 'line':
                 // 折线平滑
-                config.smooth !== false && chartObject.shape('smooth');
+                chartConfig.smooth !== false && chartObject.shape('smooth');
                 break;
             case 'bar':
                 break;
@@ -54,9 +54,9 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
             chartObject.adjust('stack');
         }
         // 支持多折线
-        config.group && chartObject.color(config.group, (config.color));
+        chartConfig.group && chartObject.color(chartConfig.group, (config.color));
         // 扩展
-        config.extra && ((extraItems) => {
+        chartConfig.extra && ((extraItems) => {
             (extraItems || []).forEach(([extra, ...more]) => {
                 // 标记
                 if (extra === 'mark' && type === 'line') {
@@ -64,14 +64,14 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
                     // 显示标记
                     const marks = chartInstance.point().position(position).shape(markType);
                     // 着色
-                    config.group && marks.color(config.group, (config.color));
+                    chartConfig.group && marks.color(chartConfig.group, (chartConfig.color));
                 }
                 // 面积图
                 if (extra === 'area' && type === 'line') {
                     chartInstance.area().position(position);
                 }
             });
-        })(config.extra);
+        })(chartConfig.extra);
         // 渲染图标
         chartInstance.render();
         return () => {
@@ -84,13 +84,13 @@ const ChartInstance = ({ type, axis, option, width, height, ...config }) => {
     );
 }
 
-const AsyncChart = ({ _path, style, config: userConfig, data:datasource }) => {
-    const { type, ...extra } = (userConfig || {});
+const AsyncChart = ({ _path, style, chart, config: userConfig, data:datasource }) => {
+    const { type, ...extra } = (chart || {});
     return (
         <div className={styles.root} style={style} data-module-unique={_path} data-source={datasource}>
             <AsyncModule fetch={datasource}>
                 {(data) => (
-                    <ChartInstance type={type} option={data} {...extra} />
+                    <ChartInstance type={type} option={data} {...userConfig} x={extra}/>
                 )}
             </AsyncModule>
         </div>

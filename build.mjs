@@ -46,8 +46,6 @@ const buildSource = (source, target) => {
 };
 
 (() => {
-    // schema
-    buildSource('schema/resolver.v1.toml', 'schema/resolver.v1.json');
     // mock
     buildSource('mock/series.mock.v1.toml', 'mock/series.mock.v1.json');
     buildSource('mock/series.mock.v2.toml', 'mock/series.mock.v2.json');

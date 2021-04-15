@@ -9,52 +9,58 @@ display = "flex"
 component = "Chart"
 data = ["ajaxGet", "/mock/series.mock.v1.json", "data"]
 [children.children.config]
-axis = ["label", "value"]
 height = 300
-type = "bar"
 width = 260
+[children.children.chart]
+type = "bar"
+axis = ["label", "value"]
 
 [[children.children]]
 component = "Chart"
 data = ["ajaxGet", "/mock/series.mock.v2.json", "data"]
 [children.children.config]
+height = 300
+width = 260
+[children.children.chart]
+type = "line"
 axis = ["month", "temperature"]
 extra = [["mark"]]
 group = "city"
-height = 300
-type = "line"
-width = 260
+
 
 [[children.children]]
 component = "Chart"
 data = ["ajaxGet", "/mock/series.mock.v4.json", "data"]
 [children.children.config]
+height = 300
+width = 260
+[children.children.chart]
+type = "bar"
 axis = ["time", "value"]
 group = "type"
-height = 300
-type = "bar"
-width = 260
+
 
 [[children.children]]
 component = "Chart"
 data = ["ajaxGet", "/mock/series.mock.v4.json", "data"]
 [children.children.config]
+height = 300
+width = 260
+[children.children.chart]
+type = "pie"
 axis = ["value"]
 group = "type"
-height = 300
-type = "pie"
-width = 260
 
 [[children.children]]
 component = "Chart"
 data = ["ajaxGet", "/mock/series.mock.v3.json", "data"]
 [children.children.config]
+height = 300
+width = 260
+[children.children.chart]
+type = "line"
 axis = ["year", "value"]
 extra = [["area"]]
-height = 300
-smooth = false
-type = "line"
-width = 260
 
 [[children]]
 component = "Container"
