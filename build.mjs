@@ -8,10 +8,7 @@ const SOURCE_ROOT = "res/";
 const TARGET_ROOT = "public/";
 
 const deps = {
-    'chart/engine/echarts': 'node_modules/echarts/dist/*',
-    'chart/engine/antv/g2': 'node_modules/@antv/g2/dist/*',
 }
-
 
 Object.keys(deps).forEach(key => {
     const root = path.join(TARGET_ROOT, key);
