@@ -4,18 +4,20 @@
   "private": true,
   "dependencies": {
     "@antv/g2": "^4.1.13",
-    "@geist-ui/react-icons": "^1.0.1",
     "axios": "^0.21.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
+    "react-d3-tree": "^2.0.1",
     "react-dom": "^17.0.2",
+    "react-hyper-tree": "^0.2.18",
     "react-json-schema": "^1.2.2",
     "react-router-dom": "^5.2.0",
     "wouter": "^2.7.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run backend && react-scripts start",
     "build": "react-scripts build",
+    "backend": "node backend.mjs &",
     "generate": "node build.mjs"
   },
   "eslintConfig": {
@@ -36,8 +38,12 @@
     ]
   },
   "devDependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
     "react-scripts": "4.0.3",
     "shelljs": "^0.8.4",
     "toml": "^3.0.0"
-  }
+  },
+  "proxy": "http://127.0.0.1:5000"
 }

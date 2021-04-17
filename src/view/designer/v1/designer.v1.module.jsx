@@ -1,71 +1,64 @@
 import { useReducer } from 'react';
 
-import clone from 'lodash/cloneDeep';
-import isNil from 'lodash/isNil';
-import pathGet from 'lodash/get';
-import pathSet from 'lodash/set';
+import JsonSchema from 'react-json-schema';
 
-import { Plus, Trash2 } from '@geist-ui/react-icons';
+import { LegoView } from 'plug/extra/extra.plug';
+
+import { DispatchContext, schemaComponents } from 'plug/designer/designer.plug';
 
 import styles from './designer.v1.module.css';
 
-const initialState = { children: [] };
-
-const reducer = (state, action) => {
-    const { type, parent } = action;
-    switch (type) {
-        case 'add':
-            const path = [parent, 'children'].filter(o => !isNil(o));
-            const children = pathGet(state, path, []);
-            if (!Array.isArray(children)) {
-                return;
-            }
-            children.push({ label: 'test', parent: path.join('.') });
-            return pathSet(clone(state), path, children);
-        default:
-            throw new Error();
-    }
-}
-
-const TreeNode = ({ label, unique, children, dispatch, parent, index }) => {
-    return (
-        <div className={styles.node} data-unique={unique}>
-            <div className={styles.label}>
-                <span className={styles.text}>{label || '/ROOT'}</span>
-                <span className={styles.suffix} onClick={() => dispatch({ type: 'add', parent, index })}>
-                    <Plus />
-                </span>
-            </div>
-            <div className={styles.children}>
-                {(children || []).map((item, index) => (
-                    <TreeNode key={index} {...item} dispatch={dispatch} />
-                ))}
-            </div>
-        </div>
-    );
+const defaultSchema = {
+    component: 'Board',
+    children: [],
+    appendable: [
+        'Bigscreen',
+        'Chart'
+    ]
 };
 
+const reducer = (state, action) => {
+    switch (action.type) {
+        case 'add':
+            if (action.parent) {
+
+            } else {
+                return { 
+                    ...state, 
+                    children: [ 
+                        ...state.children, {
+                        component: 'Bigscreen',
+                        text: 'Hello',
+                        ts: Date.now()
+                    }
+                ]};
+            }
+            break;
+        case 'change': 
+            console.log(action);
+            if (action.parent) {
+
+            } else {
+                return { ...state, root: action.target };
+            }
+            break;
+        default:
+            console.log(state, action);
+    }
+    return state;
+};
 
 const Designer = () => {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducer(reducer, defaultSchema);
+    const view = new JsonSchema();
+    view.setComponentMap(schemaComponents);
+    console.log(state);
     return (
-        <div className={styles.root}>
-            <div className={styles.tree}>
-                <TreeNode {...state} dispatch={dispatch} />
-            </div>
-            <div className={styles.board}>
-                <div className={styles.toolbar}>
-                    <div className={styles.button}>
-                        <Trash2 />
-                    </div>
-                </div>
-                <div className={styles.content}>
-                    <pre>
-                        <code>{JSON.stringify(state, null, '  ')}</code>
-                    </pre>
-                </div>
-            </div>
-        </div>
+        <LegoView className={styles.root} title="编辑器">
+            <DispatchContext.Provider value={dispatch}>
+                {view.parseSchema(state)}
+            </DispatchContext.Provider>
+        </LegoView>
     );
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Layout from 'plug/layout/layout.v1.jsx';
+import Layout from 'plug/visualiser/visualiser.plug.jsx';
 
 import { Spinner, ajax, $compact } from 'utils/dynamic.utils.jsx';
 
@@ -27,6 +27,7 @@ const Visualizer = ({ params }) => {
             mapStruct(null, [payload]);
             setConfig(payload);
         });
+        ajax({ url: '/api/test' })
     }, [params.unique]);
     if (config === null) {
         return (

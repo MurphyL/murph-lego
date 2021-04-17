@@ -1,0 +1,40 @@
+:global(html), :global(body), :global(#root) {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.root {
+    display: flex;
+    height: 100%;
+}
+
+.root .tree {
+    width: 300px;
+    border-right: 1px solid #cfcfcf;
+}
+
+.root .tree .node {
+    display: block;
+}
+
+.root .tree .node .header {
+    position: relative;
+    margin: 3px;
+    padding: 3px;
+    user-select: none;
+}
+
+.root .tree .node .header .toolbar {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+}
+
+.root .tree .node .children {
+    margin-left: 16px;
+}
+
+.root .board {
+    flex: 1;
+}

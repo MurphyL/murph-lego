@@ -2,7 +2,10 @@ import React from 'react';
 
 class ErrorBoundary extends React.Component {
     
-    state = { hasError: false, error: null };
+    state = { 
+        hasError: false, 
+        error: null 
+    };
 
     static getDerivedStateFromError(error) {
         return {
@@ -13,7 +16,12 @@ class ErrorBoundary extends React.Component {
     
     render() {
         if (this.state.hasError) {
-            return this.props.fallback;
+            return (
+                <div className="error">
+                    <div>{this.props.fallback}</div>
+                    <div>{this.state.error.message}</div>
+                </div>
+            );
         }
         return this.props.children;
     }

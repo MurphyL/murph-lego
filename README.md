@@ -10,7 +10,7 @@
 - `react-json-schema`：通过`JSON`渲染组件；
 - [`@geist-ui/react-icons`](https://react.geist-ui.dev/en-us/components/icons)：图标；
 - [`react-spinners`](https://github.com/davidhu2000/react-spinners)：Spinner；
-
+- [rough-stuff/wired-elements](https://github.com/rough-stuff/wired-elements)
 
 ## 参考资料
 
