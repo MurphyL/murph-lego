@@ -1,0 +1,3 @@
+.flex-item {
+    flex: var(--flex-item-size);
+}

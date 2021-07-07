@@ -1,24 +1,32 @@
-import React from 'react';
-import { Route, Switch } from "wouter";
+import React, { useEffect, useState } from 'react';
 
+import { ajax } from 'utils/dynamic.utils';
 
-import Designer from 'view/designer/v2/designer.v2.module.jsx';
-import Visualiser from 'view/visualiser/v1/visualiser.v1.module.jsx';
+import JsonSchema from 'react-json-schema';
+
+import components from 'view/component/v1/lego.v1';
 
 import ErrorBoundary from 'utils/error.boundary.jsx';
 
-function App() {
+const LegoApplication = () => {
+    const [meta, setMeta] = useState(null);
+    useEffect(() => {
+        ajax({ url: process.env.REACT_APP_META_URL }).then(setMeta)
+    }, []);
+    if (!meta) {
+        return '数据查询中……';
+    }
+    const { code, payload } = meta;
+    if (code) {
+        return '查询数据错误';
+    }
+    const view = new JsonSchema();
+    view.setComponentMap(components);
     return (
         <ErrorBoundary fallback={<h2>出错了</h2>}>
-            <Switch>
-                <Route path="/lego/designer" component={Designer} />
-                <Route path="/lego/v1/:unique" component={Visualiser} />
-                <Route>
-                    <div>404</div>
-                </Route>
-            </Switch>
+            { view.parseSchema(payload) }
         </ErrorBoundary>
     );
-}
+};
 
-export default App;
+export default LegoApplication;
