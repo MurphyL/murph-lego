@@ -1,7 +1,10 @@
 {
-    "routes": [
-        {
-            "path": "====hello"
-        }
-    ]
+    "router": {
+        "routes": [{
+            "path": "",
+            "jsx": "<div>Hello, jsx page!<span>xxx</span><lego-error class='hello' message='hello' /></div>"
+        }, {
+            "path": "hello"
+        }]
+    }
 }

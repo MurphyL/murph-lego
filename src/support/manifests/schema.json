@@ -5,34 +5,53 @@
     "description": "A lego application",
     "type": "object",
     "properties": {
-        "routes": {
-            "description": "The routes of application",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "type": "object",
-                "properties": {
-                    "path": {
-                        "type": "string",
-                        "format": "uri-reference"
-                    }
-                },
-                "required": [
-                    "path"
-                ]
-            }
-        },
-        "view": {
-            "$ref": "#/$defs/viewProperties"
+        "router": {
+            "$ref": "#/$defs/routerProperties"
         }
     },
     "required": [
-        "routes"
+        "router"
     ],
     "$defs": {
         "viewProperties": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "component": {
+                    "type": "string"
+                }
+            }
+        },
+        "routerProperties": {
+            "type": "object",
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "format": "uri-reference"
+                },
+                "single": {
+                    "type": "boolean"
+                },
+                "routes": {
+                    "description": "The routes of application",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "path": {
+                                "type": "string",
+                                "format": "uri-reference"
+                            },
+                            "view": {
+                                "$ref": "#/$defs/viewProperties"
+                            }
+                        },
+                        "required": [
+                            "path"
+                        ]
+                    }
+                }
+            }
         }
     }
 }
