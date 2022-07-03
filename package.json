@@ -10,9 +10,12 @@
     "path-browserify": "^1.0.1"
   },
   "scripts": {
-    "build": "browserify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/lego.render.js",
-    "predev": "browserify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] > public/lego.render.js",
-    "dev": "serve public"
+    "build:render": "browserify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/lego.render.js",
+    "build:editor": "browserify src/editor.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/lego.editor.js",
+    "build": "npm run build:render && npm run build:editor",
+    "dev:render": "watchify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] -o public/lego.render.js -v",
+    "dev:editor": "watchify src/editor.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] -o public/lego.editor.js -v",
+    "serve": "serve public"
   },
   "browserslist": {
     "production": [
@@ -32,6 +35,7 @@
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
     "serve": "^13.0.2",
-    "uglify-js": "^3.16.1"
+    "uglify-js": "^3.16.1",
+    "watchify": "^4.0.0"
   }
 }

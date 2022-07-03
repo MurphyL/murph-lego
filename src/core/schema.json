@@ -19,14 +19,16 @@
                 "component": {
                     "type": "string"
                 }
-            }
+            },
+            "required": [
+                "component"
+            ]
         },
         "routerProperties": {
             "type": "object",
             "properties": {
                 "path": {
-                    "type": "string",
-                    "format": "uri-reference"
+                    "type": "string"
                 },
                 "single": {
                     "type": "boolean"
@@ -39,15 +41,14 @@
                         "type": "object",
                         "properties": {
                             "path": {
-                                "type": "string",
-                                "format": "uri-reference"
+                                "type": "string"
                             },
                             "view": {
                                 "$ref": "#/$defs/viewProperties"
                             }
                         },
                         "required": [
-                            "path"
+                            "path", "view"
                         ]
                     }
                 }

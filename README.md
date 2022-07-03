@@ -1,18 +1,28 @@
 ## 支持图表渲染引擎
 
-- `@antv/g2`
+### 通用属性
 
-## 依赖工具类
+```toml
+component = "react-json-schema 的组件描述"
+data = ["数据抽取方法", "数据引用（AJAX URL/Local Data ID）", "数据Lodash路径"]
+[config]
+width = "组件宽度"
+height = "组件宽度"
+[style]
+# React 组件 Inline CSS 样式
+```
 
-- `toml`：构造`mock`数据文件；
-- `wouter`：`React`路由工具库；
-- `scriptjs`：`JSONP`工具类；
-- `react-json-schema`：通过`JSON`渲染组件；
-- [`@geist-ui/react-icons`](https://react.geist-ui.dev/en-us/components/icons)：图标；
-- [`react-spinners`](https://github.com/davidhu2000/react-spinners)：Spinner；
-- [rough-stuff/wired-elements](https://github.com/rough-stuff/wired-elements)
+### 图表属性
 
-## 参考资料
+```toml
+[chart]
+axis = ["X轴", "Y轴"]
+type = "图表类型"
+group = "数据分组字段"
+```
 
-- [React Patterns](https://reactpatterns.com/)
-- [TOML<->JSON Online converter](https://pseitz.github.io/toml-to-json-online-converter/)
+### 表格属性
+
+```toml
+[datagrid]
+```

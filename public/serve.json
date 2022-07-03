@@ -1,12 +1,12 @@
 {
     "rewrites": [
         {
-            "source": "/**",
+            "source": "/render",
             "destination": "/index.html"
         },
         {
-            "source": "/meta.json",
-            "destination": "/meta.json"
+            "source": "/editor",
+            "destination": "/editor.html"
         }
     ]
 }

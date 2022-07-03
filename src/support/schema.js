@@ -1,11 +1,11 @@
 const Ajv = require("ajv");
-const addFormats = require("ajv-formats");
-const rootSchema = require('./schema.json');
 
-module.exports = function (data = {}) {
+module.exports.validate = function (schema, data) {
+    if (!schema || !data) {
+        return { success: failure, errors: [{ message: 'schema or data is null' }] };
+    }
     const ajv = new Ajv();
-    addFormats(ajv);
-    const validate = ajv.compile(rootSchema);
+    const validate = ajv.compile(schema);
     const result = { success: validate(data) };
     if (!result.success) {
         result.errors = (validate.errors || []).map(({ instancePath, message }) => {

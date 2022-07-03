@@ -1,10 +1,52 @@
 {
     "router": {
-        "routes": [{
-            "path": "",
-            "jsx": "<div>Hello, jsx page!<span>xxx</span><lego-error class='hello' message='hello' /></div>"
-        }, {
-            "path": "hello"
-        }]
+        "routes": [
+            {
+                "path": "",
+                "view": {
+                    "component": "lego-layout",
+                    "class": "home",
+                    "children": [
+                        {
+                            "component": "lego-form"
+                        },
+                        {
+                            "component": "lego-toolbar",
+                            "class": "toolbar",
+                            "children": [
+                                {
+                                    "component": "lego-button",
+                                    "children": "查询"
+                                },
+                                {
+                                    "component": "lego-button",
+                                    "children": "重置"
+                                },
+                                {
+                                    "component": "div",
+                                    "style": "flex: 1; text-align: right;",
+                                    "children": [
+                                        {
+                                            "component": "lego-button",
+                                            "children": "重置"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "component": "lego-table"
+                        }
+                    ]
+                }
+            },
+            {
+                "path": "hello",
+                "view": {
+                    "component": "lego-layout",
+                    "class": "hello"
+                }
+            }
+        ]
     }
 }
