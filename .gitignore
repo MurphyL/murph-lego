@@ -11,10 +11,8 @@
 package-lock.json
 # production
 /build
-/public/mock
-/public/chart
-/public/schema
-/public/target
+/public/lego.render.js
+/public/lego.editor.js
 
 # misc
 .DS_Store

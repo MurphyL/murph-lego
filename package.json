@@ -10,8 +10,8 @@
     "path-browserify": "^1.0.1"
   },
   "scripts": {
-    "build": "browserify src/index.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/app.js",
-    "predev": "browserify src/index.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] > public/app.js",
+    "build": "browserify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/lego.render.js",
+    "predev": "browserify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] > public/lego.render.js",
     "dev": "serve public"
   },
   "browserslist": {
