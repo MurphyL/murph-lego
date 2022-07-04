@@ -7,14 +7,15 @@
     "ajv-formats": "^2.1.1",
     "axios": "^0.27.2",
     "htm": "^3.1.1",
+    "mithril": "^2.2.2",
     "path-browserify": "^1.0.1"
   },
   "scripts": {
     "build:render": "browserify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/lego.render.js",
     "build:editor": "browserify src/editor.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] | uglifyjs > public/lego.editor.js",
     "build": "npm run build:render && npm run build:editor",
-    "dev:render": "watchify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] -o public/lego.render.js -v",
-    "dev:editor": "watchify src/editor.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] -o public/lego.editor.js -v",
+    "dev:render": "CHOKIDAR_USEPOLLING=true watchify src/render.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] -o public/lego.render.js -v",
+    "dev:editor": "CHOKIDAR_USEPOLLING=true watchify src/editor.js -t [ babelify --presets [ @babel/preset-env ] --plugins [] ] -o public/lego.editor.js -v",
     "serve": "serve public"
   },
   "browserslist": {

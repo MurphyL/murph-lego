@@ -8,11 +8,9 @@
                     "class": "home",
                     "children": [
                         {
-                            "component": "lego-form"
-                        },
-                        {
                             "component": "lego-toolbar",
                             "class": "toolbar",
+                            "style": "display: flex;",
                             "children": [
                                 {
                                     "component": "lego-button",
@@ -33,18 +31,8 @@
                                     ]
                                 }
                             ]
-                        },
-                        {
-                            "component": "lego-table"
                         }
                     ]
-                }
-            },
-            {
-                "path": "hello",
-                "view": {
-                    "component": "lego-layout",
-                    "class": "hello"
                 }
             }
         ]
