@@ -8,16 +8,14 @@
                     "class": "home",
                     "children": [
                         {
-                            "component": "lego-toolbar",
-                            "class": "toolbar",
-                            "style": "display: flex;",
+                            "component": "Toolbar",
                             "children": [
                                 {
-                                    "component": "lego-button",
+                                    "component": "Button",
                                     "children": "查询"
                                 },
                                 {
-                                    "component": "lego-button",
+                                    "component": "Button",
                                     "children": "重置"
                                 },
                                 {
@@ -25,8 +23,8 @@
                                     "style": "flex: 1; text-align: right;",
                                     "children": [
                                         {
-                                            "component": "lego-button",
-                                            "children": "重置"
+                                            "component": "Button",
+                                            "children": "导出"
                                         }
                                     ]
                                 }

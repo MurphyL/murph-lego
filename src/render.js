@@ -17,6 +17,9 @@
             if (this.isDebugEnable) {
                 console.log('加载应用描述信息：', manifests);
             }
+            const mithril = require('mithril');
+            this.elements = require('./core/elements');
+            this.createElement = mithril;
             const axios = require('axios');
             axios.get(manifests).then(({ status, data }) => {
                 if (status === 200) {
@@ -31,7 +34,6 @@
                                 return console.error('当前应用尚未配置任何路由规则，无法正常显示');
                             }
                             const [root, router] = this.createRouter(data.router);
-                            const mithril = require('mithril');
                             mithril.route(this.shadow, root, router);
                         } catch (e) {
                             console.error('渲染视图出错：', e);
@@ -53,25 +55,36 @@
             const path = require('path-browserify');
             const router = {};
             for (let route of (routes || [])) {
-                router[path.join('/', route.path || '')] = {
-                    view: () => this.createComponent(route.view)
+                const routePath = path.join('/', route.path || '');
+                router[routePath] = {
+                    view: () => this.createComponent(route.view, `$[route=${routePath}]`)
                 };
             }
             return [path.join('/', root || ''), router];
         }
 
-        createComponent({ component = 'div', children, ...props }) {
-            const attrs = { ...props, 'data-type': 'lego-component' };
-            if (typeof children === 'string') {
-                return { tag: component, attrs, children: [{ tag: '#', children }] };
-            }
-            if (Array.isArray(children)) {
-                for (let index in children) {
-                    children[index] = this.createComponent(children[index]);
+        createElement() {
+
+        }
+
+        createComponent({ component = 'div', children, ...props }, path) {
+            const elements = [];
+            if (this.elements[component]) {
+                if (typeof children === 'string') {
+                    elements.push({ tag: '#', children });
+                } else if (Array.isArray(children)) {
+                    children.forEach(child => elements.push(this.createComponent(child, `${path}.${component}`)))
                 }
-                return { tag: component, attrs, children };
+                const attrs = { ...props, 'data-type': 'lego-prepare', key: `${path}.${component}` };
+                return this.createElement(this.elements[component], attrs, elements);
             } else {
-                return { tag: component, attrs };
+                if (typeof children === 'string') {
+                    elements.push({ tag: '#', children });
+                } else if (Array.isArray(children)) {
+                    children.forEach(child => elements.push(this.createComponent(child, `${path}.${component}`)));
+                }
+                const attrs = { ...props, 'data-type': 'lego-component', key: `${path}.${component}` };
+                return { tag: component, attrs, children: elements };
             }
         }
 
